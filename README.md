@@ -1,24 +1,36 @@
-# README
+Interpreters In Illinois
+=================
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+##### What is this?
+A rails project for people looking for competent interpreters for anything legal-related.
 
-Things you may want to cover:
+##### What problem does this solve?
+Existing registry at https://publicapps.illinoiscourts.gov/ may not clarify different types of professionals
 
-* Ruby version
+##### Project background
+Among other things, let's have the registry try a new look
 
-* System dependencies
+##### Dependencies
+ruby 2.3.0
+frontend: webpack
 
-* Configuration
+##### Current Project Status
+development that might include some scraping
 
-* Database creation
+## How to use this
+Search by Filtering Profession Types
 
-* Database initialization
+## How to set up the development code (for the nerds)
+after cloning the project, setting up rails environment,
+```bundle install``` with bundler
+```npm install``` with npm (for frontend)
 
-* How to run the test suite
+## Team
+Rene M.,
+pending more.
 
-* Services (job queues, cache servers, search engines, etc.)
+## How to Contribute
+Pull requests welcome, also are issues
 
-* Deployment instructions
-
-* ...
+## Copyright
+2016
