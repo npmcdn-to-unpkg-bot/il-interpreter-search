@@ -75,7 +75,9 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var mockInterpreters = [{ name: "MLA", phone: "573-XXX-XXXX", level: "yes", zipcode: 63301, language: "spanish" }, { name: "ECN", phone: "773-XXX-XXXX", level: "yes", zipcode: 60630, language: "spanish" }, { name: "NBF", phone: "773-XXX-XXXX", level: "no", zipcode: 60600, language: "spanish" }, { name: "MLZ", phone: "773-XXX-XXXX", level: "no", zipcode: 60600, language: "spanish" }];
+	var mockInterpreters = [{ id: 1, name: "MLA", phone: "573-XXX-XXXX", level: "yes", zipcode: 63301, language: "spanish" }, { id: 2, name: "ECN", phone: "773-XXX-XXXX", level: "yes", zipcode: 60630, language: "spanish" }, { id: 3, name: "NBF", phone: "773-XXX-XXXX", level: "no", zipcode: 60600, language: "spanish" }, { id: 4, name: "MLZ", phone: "773-XXX-XXXX", level: "no", zipcode: 60600, language: "spanish" }];
+	
+	var mockLanguages = [{ lid: 100, language: "spanish", count: 123 }, { lid: 200, language: "tagalog", count: 234 }, { lid: 300, language: "japanese", count: 345 }, { lid: 400, language: "polish", count: 456 }];
 	
 	var Main = function (_React$Component) {
 	  _inherits(Main, _React$Component);
@@ -92,9 +94,9 @@
 	      return React.createElement(
 	        'div',
 	        null,
-	        React.createElement(_LanguageList2.default, null),
-	        React.createElement(_CredentialLevelFilter2.default, { interpreters: mockInterpreters }),
-	        React.createElement(_DataList2.default, null)
+	        React.createElement(_LanguageList2.default, { languages: mockLanguages }),
+	        React.createElement(_CredentialLevelFilter2.default, null),
+	        React.createElement(_DataList2.default, { entries: mockInterpreters })
 	      );
 	    }
 	  }]);
@@ -135,6 +137,10 @@
 	
 	var _ButtonGroup2 = _interopRequireDefault(_ButtonGroup);
 	
+	var _ButtonToolbar = __webpack_require__(/*! react-bootstrap/lib/ButtonToolbar */ 234);
+	
+	var _ButtonToolbar2 = _interopRequireDefault(_ButtonToolbar);
+	
 	var _Panel = __webpack_require__(/*! react-bootstrap/lib/Panel */ 203);
 	
 	var _Panel2 = _interopRequireDefault(_Panel);
@@ -161,9 +167,8 @@
 	    value: function classes() {
 	      return {
 	        'default': {
-	          box: {
-	            background: "#123412",
-	            padding: "20px"
+	          spacer: {
+	            padding: "25px 0"
 	          }
 	        }
 	      };
@@ -171,24 +176,29 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	
 	      return React.createElement(
 	        'div',
 	        null,
 	        React.createElement(
 	          'div',
-	          { style: this.styles().box },
+	          { style: this.styles().spacer },
 	          React.createElement(
-	            _ButtonGroup2.default,
+	            _ButtonToolbar2.default,
 	            null,
 	            React.createElement(
-	              _Button2.default,
-	              null,
-	              'Sign Language'
-	            ),
-	            React.createElement(
-	              _Button2.default,
-	              null,
-	              'Limited English Language'
+	              _ButtonGroup2.default,
+	              { bsSize: 'small' },
+	              React.createElement(
+	                _Button2.default,
+	                null,
+	                'Sign Language'
+	              ),
+	              React.createElement(
+	                _Button2.default,
+	                null,
+	                'Limited English Language'
+	              )
 	            )
 	          )
 	        ),
@@ -23313,7 +23323,7 @@
 /*!*****************************************************!*\
   !*** ./app/assets/frontend/components/DataList.jsx ***!
   \*****************************************************/
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
@@ -23321,7 +23331,15 @@
 	  value: true
 	});
 	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _Interpreter = __webpack_require__(/*! ./Interpreter */ 232);
+	
+	var _Interpreter2 = _interopRequireDefault(_Interpreter);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -23341,6 +23359,10 @@
 	  _createClass(DataList, [{
 	    key: "render",
 	    value: function render() {
+	
+	      var interpreterEntries = this.props.entries.map(function (interpreter) {
+	        return React.createElement(_Interpreter2.default, _extends({ key: interpreter.id }, interpreter));
+	      });
 	      return React.createElement(
 	        "div",
 	        { className: "table-responsive" },
@@ -23383,64 +23405,7 @@
 	          React.createElement(
 	            "tbody",
 	            null,
-	            React.createElement(
-	              "tr",
-	              null,
-	              React.createElement(
-	                "td",
-	                null,
-	                "1,222"
-	              ),
-	              React.createElement(
-	                "td",
-	                null,
-	                "63301"
-	              ),
-	              React.createElement(
-	                "td",
-	                null,
-	                "M. L. A."
-	              ),
-	              React.createElement(
-	                "td",
-	                null,
-	                "573"
-	              ),
-	              React.createElement(
-	                "td",
-	                null,
-	                "yes"
-	              )
-	            ),
-	            React.createElement(
-	              "tr",
-	              null,
-	              React.createElement(
-	                "td",
-	                null,
-	                "1,239"
-	              ),
-	              React.createElement(
-	                "td",
-	                null,
-	                "60630"
-	              ),
-	              React.createElement(
-	                "td",
-	                null,
-	                "E C-N"
-	              ),
-	              React.createElement(
-	                "td",
-	                null,
-	                "773"
-	              ),
-	              React.createElement(
-	                "td",
-	                null,
-	                "yes"
-	              )
-	            )
+	            interpreterEntries
 	          )
 	        )
 	      );
@@ -23457,7 +23422,7 @@
 /*!*********************************************************!*\
   !*** ./app/assets/frontend/components/LanguageList.jsx ***!
   \*********************************************************/
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
@@ -23465,7 +23430,15 @@
 	  value: true
 	});
 	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _Language = __webpack_require__(/*! ./Language */ 233);
+	
+	var _Language2 = _interopRequireDefault(_Language);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -23485,54 +23458,15 @@
 	  _createClass(LanguageList, [{
 	    key: "render",
 	    value: function render() {
+	
+	      var links = this.props.languages.map(function (link) {
+	        return React.createElement(_Language2.default, _extends({ key: link.lid }, link));
+	      });
+	
 	      return React.createElement(
 	        "div",
 	        { id: "nav-secondary", className: "pl2 my2 border-left border-thick border-darken" },
-	        React.createElement(
-	          "div",
-	          { className: "px2 col-6 sm-col-4 md-col-3  " },
-	          React.createElement(
-	            "a",
-	            { href: "#intdb-spanish", className: "h6 caps bold inline-block py1 color-inherit text-decoration-none hover-underline underline" },
-	            "Spanish"
-	          )
-	        ),
-	        React.createElement(
-	          "div",
-	          { className: "px2 col-6 sm-col-4 md-col-3  " },
-	          React.createElement(
-	            "a",
-	            { href: "#intdb-polish", className: "h6 caps bold inline-block py1 color-inherit text-decoration-none hover-underline underline" },
-	            "Polish"
-	          )
-	        ),
-	        React.createElement(
-	          "div",
-	          { className: "px2 col-6 sm-col-4 md-col-3  " },
-	          React.createElement(
-	            "a",
-	            { href: "#intdb-margin", className: "h6 caps bold inline-block py1 color-inherit text-decoration-none hover-underline underline" },
-	            "Mandarin"
-	          )
-	        ),
-	        React.createElement(
-	          "div",
-	          { className: "px2 col-6 sm-col-4 md-col-3  " },
-	          React.createElement(
-	            "a",
-	            { href: "#intdb-padding", className: "h6 caps bold inline-block py1 color-inherit text-decoration-none hover-underline underline" },
-	            "Cantonese"
-	          )
-	        ),
-	        React.createElement(
-	          "div",
-	          { className: "px2 col-6 sm-col-4 md-col-3  " },
-	          React.createElement(
-	            "a",
-	            { href: "#intdb-articles", className: "h6 caps bold inline-block py1 color-inherit text-decoration-none hover-underline underline" },
-	            "Japanese"
-	          )
-	        )
+	        links
 	      );
 	    }
 	  }]);
@@ -23541,6 +23475,186 @@
 	}(React.Component);
 	
 	exports.default = LanguageList;
+
+/***/ },
+/* 232 */
+/*!********************************************************!*\
+  !*** ./app/assets/frontend/components/Interpreter.jsx ***!
+  \********************************************************/
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Interpreter = function (_React$Component) {
+	  _inherits(Interpreter, _React$Component);
+	
+	  function Interpreter() {
+	    _classCallCheck(this, Interpreter);
+	
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Interpreter).apply(this, arguments));
+	  }
+	
+	  _createClass(Interpreter, [{
+	    key: "render",
+	    value: function render() {
+	      return React.createElement(
+	        "tr",
+	        null,
+	        React.createElement(
+	          "td",
+	          null,
+	          "id-xxxx"
+	        ),
+	        React.createElement(
+	          "td",
+	          null,
+	          this.props.zipcode
+	        ),
+	        React.createElement(
+	          "td",
+	          null,
+	          this.props.name
+	        ),
+	        React.createElement(
+	          "td",
+	          null,
+	          this.props.phone
+	        ),
+	        React.createElement(
+	          "td",
+	          null,
+	          this.props.level
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return Interpreter;
+	}(React.Component);
+	
+	exports.default = Interpreter;
+
+/***/ },
+/* 233 */
+/*!*****************************************************!*\
+  !*** ./app/assets/frontend/components/Language.jsx ***!
+  \*****************************************************/
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Language = function (_React$Component) {
+	  _inherits(Language, _React$Component);
+	
+	  function Language() {
+	    _classCallCheck(this, Language);
+	
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Language).apply(this, arguments));
+	  }
+	
+	  _createClass(Language, [{
+	    key: "render",
+	    value: function render() {
+	      return React.createElement(
+	        "div",
+	        { className: "px2 col-6 sm-col-4 md-col-3  " },
+	        React.createElement(
+	          "a",
+	          { href: "#intdb-spanish", className: "h6 caps bold inline-block py1 color-inherit text-decoration-none hover-underline underline" },
+	          this.props.language
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return Language;
+	}(React.Component);
+	
+	exports.default = Language;
+
+/***/ },
+/* 234 */
+/*!************************************************!*\
+  !*** ./~/react-bootstrap/lib/ButtonToolbar.js ***!
+  \************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _extends = __webpack_require__(/*! babel-runtime/helpers/extends */ 171)['default'];
+	
+	var _interopRequireDefault = __webpack_require__(/*! babel-runtime/helpers/interop-require-default */ 187)['default'];
+	
+	exports.__esModule = true;
+	
+	var _react = __webpack_require__(/*! react */ 4);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _classnames = __webpack_require__(/*! classnames */ 188);
+	
+	var _classnames2 = _interopRequireDefault(_classnames);
+	
+	var _utilsBootstrapUtils = __webpack_require__(/*! ./utils/bootstrapUtils */ 191);
+	
+	var _utilsBootstrapUtils2 = _interopRequireDefault(_utilsBootstrapUtils);
+	
+	var _Button = __webpack_require__(/*! ./Button */ 170);
+	
+	var _Button2 = _interopRequireDefault(_Button);
+	
+	var ButtonToolbar = _react2['default'].createClass({
+	  displayName: 'ButtonToolbar',
+	
+	  propTypes: {
+	    bsSize: _Button2['default'].propTypes.bsSize
+	  },
+	
+	  getDefaultProps: function getDefaultProps() {
+	    return {
+	      bsClass: 'btn-toolbar'
+	    };
+	  },
+	
+	  render: function render() {
+	    var classes = _utilsBootstrapUtils2['default'].getClassSet(this.props);
+	
+	    return _react2['default'].createElement(
+	      'div',
+	      _extends({}, this.props, {
+	        role: 'toolbar',
+	        className: _classnames2['default'](this.props.className, classes) }),
+	      this.props.children
+	    );
+	  }
+	});
+	
+	exports['default'] = ButtonToolbar;
+	module.exports = exports['default'];
 
 /***/ }
 /******/ ]);

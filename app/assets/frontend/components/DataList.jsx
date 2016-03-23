@@ -1,5 +1,9 @@
+import Interpreter from './Interpreter';
+
 export default class DataList extends React.Component {
   render() {
+
+    let interpreterEntries = this.props.entries.map(interpreter => <Interpreter key={ interpreter.id } {...interpreter} />)
     return (
       <div className="table-responsive">
             <table className="table table-striped">
@@ -13,21 +17,7 @@ export default class DataList extends React.Component {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>1,222</td>
-                  <td>63301</td>
-                  <td>M. L. A.</td>
-                  <td>573</td>
-                  <td>yes</td>
-                </tr>
-
-                <tr>
-                  <td>1,239</td>
-                  <td>60630</td>
-                  <td>E C-N</td>
-                  <td>773</td>
-                  <td>yes</td>
-                </tr>
+                {interpreterEntries}
               </tbody>
             </table>
           </div>

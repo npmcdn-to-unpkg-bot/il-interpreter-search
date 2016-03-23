@@ -2,22 +2,30 @@
 import CredentialLevelFilter from './components/CredentialLevelFilter';
 import Content from './components/Content';
 import DataList from './components/DataList';
-import LanguageList from './components/LanguageList'
+import LanguageList from './components/LanguageList';
 
 let mockInterpreters = [
-  { name: "MLA", phone: "573-XXX-XXXX", level: "yes" , zipcode: 63301, language: "spanish" },
-  { name: "ECN", phone: "773-XXX-XXXX", level: "yes", zipcode: 60630, language: "spanish" },
-  { name: "NBF", phone: "773-XXX-XXXX", level: "no", zipcode: 60600, language: "spanish" },
-  { name: "MLZ", phone: "773-XXX-XXXX", level: "no", zipcode: 60600, language: "spanish" }
+  { id: 1, name: "MLA", phone: "573-XXX-XXXX", level: "yes" , zipcode: 63301, language: "spanish" },
+  { id: 2, name: "ECN", phone: "773-XXX-XXXX", level: "yes", zipcode: 60630, language: "spanish" },
+  { id: 3, name: "NBF", phone: "773-XXX-XXXX", level: "no", zipcode: 60600, language: "spanish" },
+  { id: 4, name: "MLZ", phone: "773-XXX-XXXX", level: "no", zipcode: 60600, language: "spanish" }
+]
+
+let mockLanguages = [
+  { lid: 100, language: "spanish", count: 123 },
+  { lid: 200, language: "tagalog", count: 234 },
+  { lid: 300, language: "japanese", count: 345 },
+  { lid: 400, language: "polish", count: 456 }
 ]
 
 class Main extends React.Component {
+
   render() {
     return (
       <div>
-        <LanguageList />
-        <CredentialLevelFilter interpreters={mockInterpreters} />
-        <DataList />
+        <LanguageList languages={mockLanguages}/>
+        <CredentialLevelFilter  />
+        <DataList entries={mockInterpreters}/>
       </div>
     );
   }
