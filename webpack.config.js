@@ -16,7 +16,11 @@ module.exports = {
                 query: {
                     presets: ["react", "es2015"]
                 }
+            },
+
+            {
+              loader: "react-map-styles"
             }
         ]
-    }        
+    }
 };
