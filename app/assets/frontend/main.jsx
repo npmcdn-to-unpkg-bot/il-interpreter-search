@@ -1,7 +1,6 @@
-
-import CredentialLevelFilter from './components/CredentialLevelFilter';
 import Content from './components/Content';
 import DataList from './components/DataList';
+import DataFilters from './components/DataFilters';
 import LanguageList from './components/LanguageList';
 
 let mockInterpreters = [
@@ -24,7 +23,7 @@ class Main extends React.Component {
     return (
       <div>
         <LanguageList languages={mockLanguages}/>
-        <CredentialLevelFilter  />
+        <DataFilters  />
         <DataList entries={mockInterpreters}/>
       </div>
     );
