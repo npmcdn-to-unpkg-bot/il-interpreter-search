@@ -24,7 +24,7 @@ export default class LanguageList extends ReactCSS.Component {
     let total = this.props.languages.length;
 
     return (
-      <div>
+      <div className="py4 mx2">
         <div id="nav-secondary" className="pl2 my2 border-left border-thick border-darken" >
           <div className="mxn2 flex flex-wrap">
             { links }

@@ -18,8 +18,11 @@
       <script src="//cdnjs.cloudflare.com/ajax/libs/es5-shim/3.4.0/es5-sham.js"></script>
     <![endif]-->
 
-
+    <!-- google fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    <!-- bass css -->
     <link href="https://npmcdn.com/basscss@8.0.1/css/basscss.min.css" rel="stylesheet">
+    <!-- bootstrap css -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet">
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
@@ -29,11 +32,7 @@
   </head>
 
   <body>
-
-
       <%= render partial: 'layouts/navbar' %>
       <%= yield %>
-
-
   </body>
 </html>

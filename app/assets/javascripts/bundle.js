@@ -145,6 +145,10 @@
 	
 	var _Panel2 = _interopRequireDefault(_Panel);
 	
+	var _InterpreterTypeSelector = __webpack_require__(/*! ./InterpreterTypeSelector */ 235);
+	
+	var _InterpreterTypeSelector2 = _interopRequireDefault(_InterpreterTypeSelector);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -183,24 +187,7 @@
 	        React.createElement(
 	          'div',
 	          { style: this.styles().spacer },
-	          React.createElement(
-	            _ButtonToolbar2.default,
-	            null,
-	            React.createElement(
-	              _ButtonGroup2.default,
-	              { bsSize: 'small' },
-	              React.createElement(
-	                _Button2.default,
-	                null,
-	                'Sign Language'
-	              ),
-	              React.createElement(
-	                _Button2.default,
-	                null,
-	                'Limited English Language'
-	              )
-	            )
-	          )
+	          React.createElement(_InterpreterTypeSelector2.default, null)
 	        ),
 	        React.createElement(
 	          _Panel2.default,
@@ -23614,7 +23601,7 @@
 	
 	      return React.createElement(
 	        "div",
-	        null,
+	        { className: "py4 mx2" },
 	        React.createElement(
 	          "div",
 	          { id: "nav-secondary", className: "pl2 my2 border-left border-thick border-darken" },
@@ -23693,6 +23680,79 @@
 	}(React.Component);
 	
 	exports.default = Language;
+
+/***/ },
+/* 235 */
+/*!********************************************************************!*\
+  !*** ./app/assets/frontend/components/InterpreterTypeSelector.jsx ***!
+  \********************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _Button = __webpack_require__(/*! react-bootstrap/lib/Button */ 170);
+	
+	var _Button2 = _interopRequireDefault(_Button);
+	
+	var _ButtonGroup = __webpack_require__(/*! react-bootstrap/lib/ButtonGroup */ 201);
+	
+	var _ButtonGroup2 = _interopRequireDefault(_ButtonGroup);
+	
+	var _ButtonToolbar = __webpack_require__(/*! react-bootstrap/lib/ButtonToolbar */ 203);
+	
+	var _ButtonToolbar2 = _interopRequireDefault(_ButtonToolbar);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var InterpreterTypeSelector = function (_React$Component) {
+	  _inherits(InterpreterTypeSelector, _React$Component);
+	
+	  function InterpreterTypeSelector() {
+	    _classCallCheck(this, InterpreterTypeSelector);
+	
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(InterpreterTypeSelector).apply(this, arguments));
+	  }
+	
+	  _createClass(InterpreterTypeSelector, [{
+	    key: 'render',
+	    value: function render() {
+	      return React.createElement(
+	        _ButtonToolbar2.default,
+	        null,
+	        React.createElement(
+	          _ButtonGroup2.default,
+	          { bsSize: 'small' },
+	          React.createElement(
+	            _Button2.default,
+	            null,
+	            'Sign Language'
+	          ),
+	          React.createElement(
+	            _Button2.default,
+	            null,
+	            'Limited English Language'
+	          )
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return InterpreterTypeSelector;
+	}(React.Component);
+	
+	exports.default = InterpreterTypeSelector;
 
 /***/ }
 /******/ ]);

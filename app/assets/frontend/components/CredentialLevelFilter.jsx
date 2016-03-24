@@ -4,6 +4,8 @@ import ButtonGroup from 'react-bootstrap/lib/ButtonGroup';
 import ButtonToolbar from 'react-bootstrap/lib/ButtonToolbar';
 import Panel from 'react-bootstrap/lib/Panel';
 
+import InterpreterTypeSelector from './InterpreterTypeSelector';
+
 export default class CredentialLevelFilter extends ReactCSS.Component {
 
   classes() {
@@ -21,12 +23,7 @@ export default class CredentialLevelFilter extends ReactCSS.Component {
     return (
       <div>
         <div is="spacer">
-          <ButtonToolbar>
-            <ButtonGroup bsSize="small">
-              <Button>Sign Language</Button>
-              <Button>Limited English Language</Button>
-            </ButtonGroup>
-          </ButtonToolbar>
+          <InterpreterTypeSelector />
         </div>
 
         <Panel footer="This + means a higher credential level (advanced/certified)">
