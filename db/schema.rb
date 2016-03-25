@@ -11,9 +11,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20160325050729) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "interpreters", force: :cascade do |t|
+    t.integer  "aoicid"
+    t.string   "first_name"
+    t.string   "middle_name"
+    t.string   "last_name"
+    t.string   "address1"
+    t.string   "address2"
+    t.string   "city"
+    t.string   "state"
+    t.integer  "zip"
+    t.string   "reg_email"
+    t.string   "alternate_email"
+    t.string   "phone"
+    t.string   "alternate_phone"
+    t.string   "circuit_availability"
+    t.boolean  "remote_interpret_phone"
+    t.boolean  "remote_interpret_video"
+    t.string   "language_code"
+    t.string   "language"
+    t.string   "certification"
+    t.datetime "expiry_date"
+    t.datetime "certification_date"
+    t.text     "comments"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
 end
