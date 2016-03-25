@@ -3,8 +3,8 @@ export default class Interpreter extends React.Component {
     return (
       <tr>
         <td>id-xxxx</td>
-        <td>{this.props.zipcode}</td>
-        <td>{this.props.name}</td>
+        <td>{this.props.zip}</td>
+        <td>{this.props.first_name}</td>
         <td>{this.props.phone}</td>
         <td>{this.props.level}</td>
       </tr>

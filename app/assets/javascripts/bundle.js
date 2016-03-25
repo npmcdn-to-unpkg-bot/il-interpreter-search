@@ -82,13 +82,27 @@
 	var Main = function (_React$Component) {
 	  _inherits(Main, _React$Component);
 	
-	  function Main() {
+	  function Main(props) {
 	    _classCallCheck(this, Main);
 	
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Main).apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Main).call(this, props));
+	
+	    _this.state = { interpretersList: [] };
+	    return _this;
 	  }
 	
 	  _createClass(Main, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var _this2 = this;
+	
+	      $.ajax("/interpreters").success(function (data) {
+	        return _this2.setState({ interpretersList: data });
+	      }).error(function (error) {
+	        return console.log(error);
+	      });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return React.createElement(
@@ -96,7 +110,7 @@
 	        null,
 	        React.createElement(_LanguageList2.default, { languages: mockLanguages }),
 	        React.createElement(_DataFilters2.default, null),
-	        React.createElement(_DataList2.default, { entries: mockInterpreters })
+	        React.createElement(_DataList2.default, { entries: this.state.interpretersList })
 	      );
 	    }
 	  }]);
@@ -303,12 +317,12 @@
 	        React.createElement(
 	          "td",
 	          null,
-	          this.props.zipcode
+	          this.props.zip
 	        ),
 	        React.createElement(
 	          "td",
 	          null,
-	          this.props.name
+	          this.props.first_name
 	        ),
 	        React.createElement(
 	          "td",

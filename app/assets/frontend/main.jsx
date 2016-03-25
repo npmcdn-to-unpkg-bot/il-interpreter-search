@@ -19,12 +19,23 @@ let mockLanguages = [
 
 class Main extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.state = { interpretersList: []}
+  }
+
+  componentDidMount() {
+    $.ajax("/interpreters")
+    .success(data => this.setState({ interpretersList: data}))
+    .error(error => console.log(error));
+  }
+
   render() {
     return (
       <div>
-        <LanguageList languages={mockLanguages}/>
+        <LanguageList languages={mockLanguages} />
         <DataFilters  />
-        <DataList entries={mockInterpreters}/>
+        <DataList entries={this.state.interpretersList} />
       </div>
     );
   }
