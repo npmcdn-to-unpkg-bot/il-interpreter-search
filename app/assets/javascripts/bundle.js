@@ -75,8 +75,6 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var mockInterpreters = [{ id: 1, name: "MLA", phone: "573-XXX-XXXX", level: "yes", zipcode: 63301, language: "spanish" }, { id: 2, name: "ECN", phone: "773-XXX-XXXX", level: "yes", zipcode: 60630, language: "spanish" }, { id: 3, name: "NBF", phone: "773-XXX-XXXX", level: "no", zipcode: 60600, language: "spanish" }, { id: 4, name: "MLZ", phone: "773-XXX-XXXX", level: "no", zipcode: 60600, language: "spanish" }];
-	
 	var mockLanguages = [{ lid: 100, language: "spanish", count: 123 }, { lid: 200, language: "tagalog", count: 234 }, { lid: 300, language: "japanese", count: 345 }, { lid: 400, language: "polish", count: 456 }];
 	
 	var Main = function (_React$Component) {
@@ -217,7 +215,7 @@
 	    value: function render() {
 	
 	      var interpreterEntries = this.props.entries.map(function (interpreter) {
-	        return React.createElement(_Interpreter2.default, _extends({ key: interpreter.id }, interpreter));
+	        return React.createElement(_Interpreter2.default, _extends({ key: interpreter.aoicid }, interpreter));
 	      });
 	      return React.createElement(
 	        "div",
@@ -239,11 +237,6 @@
 	              React.createElement(
 	                "th",
 	                null,
-	                "Zipcode Listed"
-	              ),
-	              React.createElement(
-	                "th",
-	                null,
 	                "Name"
 	              ),
 	              React.createElement(
@@ -254,7 +247,26 @@
 	              React.createElement(
 	                "th",
 	                null,
+	                "Email Contact"
+	              ),
+	              React.createElement(
+	                "th",
+	                null,
+	                "Zipcode Listed"
+	              ),
+	              React.createElement(
+	                "th",
+	                null,
 	                "+ Level"
+	              ),
+	              React.createElement(
+	                "th",
+	                null,
+	                React.createElement(
+	                  "strong",
+	                  null,
+	                  "Language"
+	                )
 	              )
 	            )
 	          ),
@@ -312,17 +324,12 @@
 	        React.createElement(
 	          "td",
 	          null,
-	          "id-xxxx"
+	          this.props.aoicid
 	        ),
 	        React.createElement(
 	          "td",
 	          null,
-	          this.props.zip
-	        ),
-	        React.createElement(
-	          "td",
-	          null,
-	          this.props.first_name
+	          this.props.first_name + " " + this.props.middle_name + " " + this.props.last_name
 	        ),
 	        React.createElement(
 	          "td",
@@ -332,7 +339,26 @@
 	        React.createElement(
 	          "td",
 	          null,
-	          this.props.level
+	          this.props.reg_email
+	        ),
+	        React.createElement(
+	          "td",
+	          null,
+	          this.props.zip
+	        ),
+	        React.createElement(
+	          "td",
+	          null,
+	          this.props.certification
+	        ),
+	        React.createElement(
+	          "td",
+	          null,
+	          React.createElement(
+	            "strong",
+	            null,
+	            this.props.language
+	          )
 	        )
 	      );
 	    }

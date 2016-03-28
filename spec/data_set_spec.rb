@@ -38,7 +38,14 @@ describe DataSet do
           expect(@result.circuit_availability).to eq("Cook")
         end
 
+
+
       end
+
+
+
+
+
 
       context 'when columns mismatch data format' do
 
