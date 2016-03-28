@@ -20864,17 +20864,17 @@
 	
 	var _reactcss2 = _interopRequireDefault(_reactcss);
 	
-	var _Button = __webpack_require__(/*! react-bootstrap/lib/Button */ 174);
+	var _ButtonToolbar = __webpack_require__(/*! react-bootstrap/lib/ButtonToolbar */ 174);
 	
-	var _Button2 = _interopRequireDefault(_Button);
+	var _ButtonToolbar2 = _interopRequireDefault(_ButtonToolbar);
 	
-	var _ButtonGroup = __webpack_require__(/*! react-bootstrap/lib/ButtonGroup */ 205);
+	var _ButtonGroup = __webpack_require__(/*! react-bootstrap/lib/ButtonGroup */ 206);
 	
 	var _ButtonGroup2 = _interopRequireDefault(_ButtonGroup);
 	
-	var _ButtonToolbar = __webpack_require__(/*! react-bootstrap/lib/ButtonToolbar */ 207);
+	var _Button = __webpack_require__(/*! react-bootstrap/lib/Button */ 203);
 	
-	var _ButtonToolbar2 = _interopRequireDefault(_ButtonToolbar);
+	var _Button2 = _interopRequireDefault(_Button);
 	
 	var _color = __webpack_require__(/*! color */ 208);
 	
@@ -20909,6 +20909,9 @@
 	          activetest: {
 	            border: "1px solid",
 	            borderColor: (0, _color2.default)('#2ECC40').alpha(0.5).lighten(0.5).hexString()
+	          },
+	          Button: {
+	            borderColor: (0, _color2.default)('#2ECC40').alpha(0.5).lighten(0.5).hexString()
 	          }
 	        }
 	      };
@@ -20916,7 +20919,7 @@
 	  }, {
 	    key: 'mockState',
 	    value: function mockState() {
-	      return true;
+	      return 'success';
 	    }
 	  }, {
 	    key: 'render',
@@ -20934,7 +20937,7 @@
 	          ),
 	          React.createElement(
 	            _Button2.default,
-	            null,
+	            { bsStyle: this.mockState() },
 	            'Limited English Language'
 	          )
 	        )
@@ -20949,9 +20952,9 @@
 
 /***/ },
 /* 174 */
-/*!*****************************************!*\
-  !*** ./~/react-bootstrap/lib/Button.js ***!
-  \*****************************************/
+/*!************************************************!*\
+  !*** ./~/react-bootstrap/lib/ButtonToolbar.js ***!
+  \************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20970,117 +20973,41 @@
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _reactPropTypesLibElementType = __webpack_require__(/*! react-prop-types/lib/elementType */ 193);
-	
-	var _reactPropTypesLibElementType2 = _interopRequireDefault(_reactPropTypesLibElementType);
-	
-	var _utilsBootstrapUtils = __webpack_require__(/*! ./utils/bootstrapUtils */ 195);
+	var _utilsBootstrapUtils = __webpack_require__(/*! ./utils/bootstrapUtils */ 193);
 	
 	var _utilsBootstrapUtils2 = _interopRequireDefault(_utilsBootstrapUtils);
 	
-	var _styleMaps = __webpack_require__(/*! ./styleMaps */ 196);
+	var _Button = __webpack_require__(/*! ./Button */ 203);
 	
-	var types = ['button', 'reset', 'submit'];
+	var _Button2 = _interopRequireDefault(_Button);
 	
-	var ButtonStyles = _styleMaps.State.values().concat(_styleMaps.DEFAULT, _styleMaps.PRIMARY, _styleMaps.LINK);
-	
-	var Button = _react2['default'].createClass({
-	  displayName: 'Button',
+	var ButtonToolbar = _react2['default'].createClass({
+	  displayName: 'ButtonToolbar',
 	
 	  propTypes: {
-	    active: _react2['default'].PropTypes.bool,
-	    disabled: _react2['default'].PropTypes.bool,
-	    block: _react2['default'].PropTypes.bool,
-	    navItem: _react2['default'].PropTypes.bool,
-	    navDropdown: _react2['default'].PropTypes.bool,
-	    /**
-	     * You can use a custom element for this component
-	     */
-	    componentClass: _reactPropTypesLibElementType2['default'],
-	    href: _react2['default'].PropTypes.string,
-	    target: _react2['default'].PropTypes.string,
-	    /**
-	     * Defines HTML button type Attribute
-	     * @type {("button"|"reset"|"submit")}
-	     * @defaultValue 'button'
-	     */
-	    type: _react2['default'].PropTypes.oneOf(types)
+	    bsSize: _Button2['default'].propTypes.bsSize
 	  },
 	
 	  getDefaultProps: function getDefaultProps() {
 	    return {
-	      active: false,
-	      block: false,
-	      disabled: false,
-	      navItem: false,
-	      navDropdown: false
+	      bsClass: 'btn-toolbar'
 	    };
 	  },
 	
 	  render: function render() {
-	    var _extends2;
-	
-	    var classes = this.props.navDropdown ? {} : _utilsBootstrapUtils2['default'].getClassSet(this.props);
-	    var renderFuncName = undefined;
-	
-	    var blockClass = _utilsBootstrapUtils2['default'].prefix(this.props, 'block');
-	
-	    classes = _extends((_extends2 = {
-	      active: this.props.active
-	    }, _extends2[blockClass] = this.props.block, _extends2), classes);
-	
-	    if (this.props.navItem) {
-	      return this.renderNavItem(classes);
-	    }
-	
-	    renderFuncName = this.props.href || this.props.target || this.props.navDropdown ? 'renderAnchor' : 'renderButton';
-	
-	    return this[renderFuncName](classes);
-	  },
-	
-	  renderAnchor: function renderAnchor(classes) {
-	    var Component = this.props.componentClass || 'a';
-	    var href = this.props.href || '#';
-	    classes.disabled = this.props.disabled;
+	    var classes = _utilsBootstrapUtils2['default'].getClassSet(this.props);
 	
 	    return _react2['default'].createElement(
-	      Component,
+	      'div',
 	      _extends({}, this.props, {
-	        href: href,
-	        className: _classnames2['default'](this.props.className, classes),
-	        role: 'button' }),
-	      this.props.children
-	    );
-	  },
-	
-	  renderButton: function renderButton(classes) {
-	    var Component = this.props.componentClass || 'button';
-	
-	    return _react2['default'].createElement(
-	      Component,
-	      _extends({}, this.props, {
-	        type: this.props.type || 'button',
+	        role: 'toolbar',
 	        className: _classnames2['default'](this.props.className, classes) }),
 	      this.props.children
-	    );
-	  },
-	
-	  renderNavItem: function renderNavItem(classes) {
-	    var liClasses = {
-	      active: this.props.active
-	    };
-	
-	    return _react2['default'].createElement(
-	      'li',
-	      { className: _classnames2['default'](liClasses) },
-	      this.renderAnchor(classes)
 	    );
 	  }
 	});
 	
-	Button.types = types;
-	
-	exports['default'] = _utilsBootstrapUtils.bsStyles(ButtonStyles, _styleMaps.DEFAULT, _utilsBootstrapUtils.bsSizes([_styleMaps.Sizes.LARGE, _styleMaps.Sizes.SMALL, _styleMaps.Sizes.XSMALL], _utilsBootstrapUtils.bsClass('btn', Button)));
+	exports['default'] = ButtonToolbar;
 	module.exports = exports['default'];
 
 /***/ },
@@ -21462,97 +21389,6 @@
 
 /***/ },
 /* 193 */
-/*!***********************************************!*\
-  !*** ./~/react-prop-types/lib/elementType.js ***!
-  \***********************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	exports.__esModule = true;
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-	
-	var _react = __webpack_require__(/*! react */ 7);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _common = __webpack_require__(/*! ./common */ 194);
-	
-	/**
-	 * Checks whether a prop provides a type of element.
-	 *
-	 * The type of element can be provided in two forms:
-	 * - tag name (string)
-	 * - a return value of React.createClass(...)
-	 *
-	 * @param props
-	 * @param propName
-	 * @param componentName
-	 * @returns {Error|undefined}
-	 */
-	
-	function validate(props, propName, componentName) {
-	  var errBeginning = _common.errMsg(props, propName, componentName, '. Expected an Element `type`');
-	
-	  if (typeof props[propName] !== 'function') {
-	    if (_react2['default'].isValidElement(props[propName])) {
-	      return new Error(errBeginning + ', not an actual Element');
-	    }
-	
-	    if (typeof props[propName] !== 'string') {
-	      return new Error(errBeginning + ' such as a tag name or return value of React.createClass(...)');
-	    }
-	  }
-	}
-	
-	exports['default'] = _common.createChainableTypeChecker(validate);
-	module.exports = exports['default'];
-
-/***/ },
-/* 194 */
-/*!******************************************!*\
-  !*** ./~/react-prop-types/lib/common.js ***!
-  \******************************************/
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	exports.__esModule = true;
-	exports.errMsg = errMsg;
-	exports.createChainableTypeChecker = createChainableTypeChecker;
-	
-	function errMsg(props, propName, componentName, msgContinuation) {
-	  return 'Invalid prop \'' + propName + '\' of value \'' + props[propName] + '\'' + (' supplied to \'' + componentName + '\'' + msgContinuation);
-	}
-	
-	/**
-	 * Create chain-able isRequired validator
-	 *
-	 * Largely copied directly from:
-	 *  https://github.com/facebook/react/blob/0.11-stable/src/core/ReactPropTypes.js#L94
-	 */
-	
-	function createChainableTypeChecker(validate) {
-	  function checkType(isRequired, props, propName, componentName) {
-	    componentName = componentName || '<<anonymous>>';
-	    if (props[propName] == null) {
-	      if (isRequired) {
-	        return new Error('Required prop \'' + propName + '\' was not specified in \'' + componentName + '\'.');
-	      }
-	    } else {
-	      return validate(props, propName, componentName);
-	    }
-	  }
-	
-	  var chainedCheckType = checkType.bind(null, false);
-	  chainedCheckType.isRequired = checkType.bind(null, true);
-	
-	  return chainedCheckType;
-	}
-
-/***/ },
-/* 195 */
 /*!*******************************************************!*\
   !*** ./~/react-bootstrap/lib/utils/bootstrapUtils.js ***!
   \*******************************************************/
@@ -21568,15 +21404,15 @@
 	
 	var _react = __webpack_require__(/*! react */ 7);
 	
-	var _styleMaps = __webpack_require__(/*! ../styleMaps */ 196);
+	var _styleMaps = __webpack_require__(/*! ../styleMaps */ 194);
 	
 	var _styleMaps2 = _interopRequireDefault(_styleMaps);
 	
-	var _invariant = __webpack_require__(/*! invariant */ 203);
+	var _invariant = __webpack_require__(/*! invariant */ 201);
 	
 	var _invariant2 = _interopRequireDefault(_invariant);
 	
-	var _warning = __webpack_require__(/*! warning */ 204);
+	var _warning = __webpack_require__(/*! warning */ 202);
 	
 	var _warning2 = _interopRequireDefault(_warning);
 	
@@ -21737,7 +21573,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 10)))
 
 /***/ },
-/* 196 */
+/* 194 */
 /*!********************************************!*\
   !*** ./~/react-bootstrap/lib/styleMaps.js ***!
   \********************************************/
@@ -21747,9 +21583,9 @@
 	
 	var _Object$assign = __webpack_require__(/*! babel-runtime/core-js/object/assign */ 176)['default'];
 	
-	var _Object$create = __webpack_require__(/*! babel-runtime/core-js/object/create */ 197)['default'];
+	var _Object$create = __webpack_require__(/*! babel-runtime/core-js/object/create */ 195)['default'];
 	
-	var _Object$keys = __webpack_require__(/*! babel-runtime/core-js/object/keys */ 199)['default'];
+	var _Object$keys = __webpack_require__(/*! babel-runtime/core-js/object/keys */ 197)['default'];
 	
 	exports.__esModule = true;
 	
@@ -21808,16 +21644,16 @@
 	exports['default'] = styleMaps;
 
 /***/ },
-/* 197 */
+/* 195 */
 /*!**************************************************!*\
   !*** ./~/babel-runtime/core-js/object/create.js ***!
   \**************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = { "default": __webpack_require__(/*! core-js/library/fn/object/create */ 198), __esModule: true };
+	module.exports = { "default": __webpack_require__(/*! core-js/library/fn/object/create */ 196), __esModule: true };
 
 /***/ },
-/* 198 */
+/* 196 */
 /*!***********************************************!*\
   !*** ./~/core-js/library/fn/object/create.js ***!
   \***********************************************/
@@ -21829,26 +21665,26 @@
 	};
 
 /***/ },
-/* 199 */
+/* 197 */
 /*!************************************************!*\
   !*** ./~/babel-runtime/core-js/object/keys.js ***!
   \************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = { "default": __webpack_require__(/*! core-js/library/fn/object/keys */ 200), __esModule: true };
+	module.exports = { "default": __webpack_require__(/*! core-js/library/fn/object/keys */ 198), __esModule: true };
 
 /***/ },
-/* 200 */
+/* 198 */
 /*!*********************************************!*\
   !*** ./~/core-js/library/fn/object/keys.js ***!
   \*********************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(/*! ../../modules/es6.object.keys */ 201);
+	__webpack_require__(/*! ../../modules/es6.object.keys */ 199);
 	module.exports = __webpack_require__(/*! ../../modules/$.core */ 181).Object.keys;
 
 /***/ },
-/* 201 */
+/* 199 */
 /*!******************************************************!*\
   !*** ./~/core-js/library/modules/es6.object.keys.js ***!
   \******************************************************/
@@ -21857,14 +21693,14 @@
 	// 19.1.2.14 Object.keys(O)
 	var toObject = __webpack_require__(/*! ./$.to-object */ 186);
 	
-	__webpack_require__(/*! ./$.object-sap */ 202)('keys', function($keys){
+	__webpack_require__(/*! ./$.object-sap */ 200)('keys', function($keys){
 	  return function keys(it){
 	    return $keys(toObject(it));
 	  };
 	});
 
 /***/ },
-/* 202 */
+/* 200 */
 /*!***************************************************!*\
   !*** ./~/core-js/library/modules/$.object-sap.js ***!
   \***************************************************/
@@ -21882,7 +21718,7 @@
 	};
 
 /***/ },
-/* 203 */
+/* 201 */
 /*!********************************!*\
   !*** ./~/invariant/browser.js ***!
   \********************************/
@@ -21943,7 +21779,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 10)))
 
 /***/ },
-/* 204 */
+/* 202 */
 /*!******************************!*\
   !*** ./~/warning/browser.js ***!
   \******************************/
@@ -22013,7 +21849,234 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 10)))
 
 /***/ },
+/* 203 */
+/*!*****************************************!*\
+  !*** ./~/react-bootstrap/lib/Button.js ***!
+  \*****************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _extends = __webpack_require__(/*! babel-runtime/helpers/extends */ 175)['default'];
+	
+	var _interopRequireDefault = __webpack_require__(/*! babel-runtime/helpers/interop-require-default */ 191)['default'];
+	
+	exports.__esModule = true;
+	
+	var _react = __webpack_require__(/*! react */ 7);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _classnames = __webpack_require__(/*! classnames */ 192);
+	
+	var _classnames2 = _interopRequireDefault(_classnames);
+	
+	var _reactPropTypesLibElementType = __webpack_require__(/*! react-prop-types/lib/elementType */ 204);
+	
+	var _reactPropTypesLibElementType2 = _interopRequireDefault(_reactPropTypesLibElementType);
+	
+	var _utilsBootstrapUtils = __webpack_require__(/*! ./utils/bootstrapUtils */ 193);
+	
+	var _utilsBootstrapUtils2 = _interopRequireDefault(_utilsBootstrapUtils);
+	
+	var _styleMaps = __webpack_require__(/*! ./styleMaps */ 194);
+	
+	var types = ['button', 'reset', 'submit'];
+	
+	var ButtonStyles = _styleMaps.State.values().concat(_styleMaps.DEFAULT, _styleMaps.PRIMARY, _styleMaps.LINK);
+	
+	var Button = _react2['default'].createClass({
+	  displayName: 'Button',
+	
+	  propTypes: {
+	    active: _react2['default'].PropTypes.bool,
+	    disabled: _react2['default'].PropTypes.bool,
+	    block: _react2['default'].PropTypes.bool,
+	    navItem: _react2['default'].PropTypes.bool,
+	    navDropdown: _react2['default'].PropTypes.bool,
+	    /**
+	     * You can use a custom element for this component
+	     */
+	    componentClass: _reactPropTypesLibElementType2['default'],
+	    href: _react2['default'].PropTypes.string,
+	    target: _react2['default'].PropTypes.string,
+	    /**
+	     * Defines HTML button type Attribute
+	     * @type {("button"|"reset"|"submit")}
+	     * @defaultValue 'button'
+	     */
+	    type: _react2['default'].PropTypes.oneOf(types)
+	  },
+	
+	  getDefaultProps: function getDefaultProps() {
+	    return {
+	      active: false,
+	      block: false,
+	      disabled: false,
+	      navItem: false,
+	      navDropdown: false
+	    };
+	  },
+	
+	  render: function render() {
+	    var _extends2;
+	
+	    var classes = this.props.navDropdown ? {} : _utilsBootstrapUtils2['default'].getClassSet(this.props);
+	    var renderFuncName = undefined;
+	
+	    var blockClass = _utilsBootstrapUtils2['default'].prefix(this.props, 'block');
+	
+	    classes = _extends((_extends2 = {
+	      active: this.props.active
+	    }, _extends2[blockClass] = this.props.block, _extends2), classes);
+	
+	    if (this.props.navItem) {
+	      return this.renderNavItem(classes);
+	    }
+	
+	    renderFuncName = this.props.href || this.props.target || this.props.navDropdown ? 'renderAnchor' : 'renderButton';
+	
+	    return this[renderFuncName](classes);
+	  },
+	
+	  renderAnchor: function renderAnchor(classes) {
+	    var Component = this.props.componentClass || 'a';
+	    var href = this.props.href || '#';
+	    classes.disabled = this.props.disabled;
+	
+	    return _react2['default'].createElement(
+	      Component,
+	      _extends({}, this.props, {
+	        href: href,
+	        className: _classnames2['default'](this.props.className, classes),
+	        role: 'button' }),
+	      this.props.children
+	    );
+	  },
+	
+	  renderButton: function renderButton(classes) {
+	    var Component = this.props.componentClass || 'button';
+	
+	    return _react2['default'].createElement(
+	      Component,
+	      _extends({}, this.props, {
+	        type: this.props.type || 'button',
+	        className: _classnames2['default'](this.props.className, classes) }),
+	      this.props.children
+	    );
+	  },
+	
+	  renderNavItem: function renderNavItem(classes) {
+	    var liClasses = {
+	      active: this.props.active
+	    };
+	
+	    return _react2['default'].createElement(
+	      'li',
+	      { className: _classnames2['default'](liClasses) },
+	      this.renderAnchor(classes)
+	    );
+	  }
+	});
+	
+	Button.types = types;
+	
+	exports['default'] = _utilsBootstrapUtils.bsStyles(ButtonStyles, _styleMaps.DEFAULT, _utilsBootstrapUtils.bsSizes([_styleMaps.Sizes.LARGE, _styleMaps.Sizes.SMALL, _styleMaps.Sizes.XSMALL], _utilsBootstrapUtils.bsClass('btn', Button)));
+	module.exports = exports['default'];
+
+/***/ },
+/* 204 */
+/*!***********************************************!*\
+  !*** ./~/react-prop-types/lib/elementType.js ***!
+  \***********************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	exports.__esModule = true;
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	var _react = __webpack_require__(/*! react */ 7);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _common = __webpack_require__(/*! ./common */ 205);
+	
+	/**
+	 * Checks whether a prop provides a type of element.
+	 *
+	 * The type of element can be provided in two forms:
+	 * - tag name (string)
+	 * - a return value of React.createClass(...)
+	 *
+	 * @param props
+	 * @param propName
+	 * @param componentName
+	 * @returns {Error|undefined}
+	 */
+	
+	function validate(props, propName, componentName) {
+	  var errBeginning = _common.errMsg(props, propName, componentName, '. Expected an Element `type`');
+	
+	  if (typeof props[propName] !== 'function') {
+	    if (_react2['default'].isValidElement(props[propName])) {
+	      return new Error(errBeginning + ', not an actual Element');
+	    }
+	
+	    if (typeof props[propName] !== 'string') {
+	      return new Error(errBeginning + ' such as a tag name or return value of React.createClass(...)');
+	    }
+	  }
+	}
+	
+	exports['default'] = _common.createChainableTypeChecker(validate);
+	module.exports = exports['default'];
+
+/***/ },
 /* 205 */
+/*!******************************************!*\
+  !*** ./~/react-prop-types/lib/common.js ***!
+  \******************************************/
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	exports.__esModule = true;
+	exports.errMsg = errMsg;
+	exports.createChainableTypeChecker = createChainableTypeChecker;
+	
+	function errMsg(props, propName, componentName, msgContinuation) {
+	  return 'Invalid prop \'' + propName + '\' of value \'' + props[propName] + '\'' + (' supplied to \'' + componentName + '\'' + msgContinuation);
+	}
+	
+	/**
+	 * Create chain-able isRequired validator
+	 *
+	 * Largely copied directly from:
+	 *  https://github.com/facebook/react/blob/0.11-stable/src/core/ReactPropTypes.js#L94
+	 */
+	
+	function createChainableTypeChecker(validate) {
+	  function checkType(isRequired, props, propName, componentName) {
+	    componentName = componentName || '<<anonymous>>';
+	    if (props[propName] == null) {
+	      if (isRequired) {
+	        return new Error('Required prop \'' + propName + '\' was not specified in \'' + componentName + '\'.');
+	      }
+	    } else {
+	      return validate(props, propName, componentName);
+	    }
+	  }
+	
+	  var chainedCheckType = checkType.bind(null, false);
+	  chainedCheckType.isRequired = checkType.bind(null, true);
+	
+	  return chainedCheckType;
+	}
+
+/***/ },
+/* 206 */
 /*!**********************************************!*\
   !*** ./~/react-bootstrap/lib/ButtonGroup.js ***!
   \**********************************************/
@@ -22035,15 +22098,15 @@
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _utilsBootstrapUtils = __webpack_require__(/*! ./utils/bootstrapUtils */ 195);
+	var _utilsBootstrapUtils = __webpack_require__(/*! ./utils/bootstrapUtils */ 193);
 	
 	var _utilsBootstrapUtils2 = _interopRequireDefault(_utilsBootstrapUtils);
 	
-	var _reactPropTypesLibAll = __webpack_require__(/*! react-prop-types/lib/all */ 206);
+	var _reactPropTypesLibAll = __webpack_require__(/*! react-prop-types/lib/all */ 207);
 	
 	var _reactPropTypesLibAll2 = _interopRequireDefault(_reactPropTypesLibAll);
 	
-	var _Button = __webpack_require__(/*! ./Button */ 174);
+	var _Button = __webpack_require__(/*! ./Button */ 203);
 	
 	var _Button2 = _interopRequireDefault(_Button);
 	
@@ -22095,7 +22158,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 206 */
+/* 207 */
 /*!***************************************!*\
   !*** ./~/react-prop-types/lib/all.js ***!
   \***************************************/
@@ -22136,66 +22199,6 @@
 	  };
 	}
 	
-	module.exports = exports['default'];
-
-/***/ },
-/* 207 */
-/*!************************************************!*\
-  !*** ./~/react-bootstrap/lib/ButtonToolbar.js ***!
-  \************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var _extends = __webpack_require__(/*! babel-runtime/helpers/extends */ 175)['default'];
-	
-	var _interopRequireDefault = __webpack_require__(/*! babel-runtime/helpers/interop-require-default */ 191)['default'];
-	
-	exports.__esModule = true;
-	
-	var _react = __webpack_require__(/*! react */ 7);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _classnames = __webpack_require__(/*! classnames */ 192);
-	
-	var _classnames2 = _interopRequireDefault(_classnames);
-	
-	var _utilsBootstrapUtils = __webpack_require__(/*! ./utils/bootstrapUtils */ 195);
-	
-	var _utilsBootstrapUtils2 = _interopRequireDefault(_utilsBootstrapUtils);
-	
-	var _Button = __webpack_require__(/*! ./Button */ 174);
-	
-	var _Button2 = _interopRequireDefault(_Button);
-	
-	var ButtonToolbar = _react2['default'].createClass({
-	  displayName: 'ButtonToolbar',
-	
-	  propTypes: {
-	    bsSize: _Button2['default'].propTypes.bsSize
-	  },
-	
-	  getDefaultProps: function getDefaultProps() {
-	    return {
-	      bsClass: 'btn-toolbar'
-	    };
-	  },
-	
-	  render: function render() {
-	    var classes = _utilsBootstrapUtils2['default'].getClassSet(this.props);
-	
-	    return _react2['default'].createElement(
-	      'div',
-	      _extends({}, this.props, {
-	        role: 'toolbar',
-	        className: _classnames2['default'](this.props.className, classes) }),
-	      this.props.children
-	    );
-	  }
-	});
-	
-	exports['default'] = ButtonToolbar;
 	module.exports = exports['default'];
 
 /***/ },
@@ -23864,15 +23867,15 @@
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	var _Button = __webpack_require__(/*! react-bootstrap/lib/Button */ 174);
+	var _Button = __webpack_require__(/*! react-bootstrap/lib/Button */ 203);
 	
 	var _Button2 = _interopRequireDefault(_Button);
 	
-	var _ButtonGroup = __webpack_require__(/*! react-bootstrap/lib/ButtonGroup */ 205);
+	var _ButtonGroup = __webpack_require__(/*! react-bootstrap/lib/ButtonGroup */ 206);
 	
 	var _ButtonGroup2 = _interopRequireDefault(_ButtonGroup);
 	
-	var _ButtonToolbar = __webpack_require__(/*! react-bootstrap/lib/ButtonToolbar */ 207);
+	var _ButtonToolbar = __webpack_require__(/*! react-bootstrap/lib/ButtonToolbar */ 174);
 	
 	var _ButtonToolbar2 = _interopRequireDefault(_ButtonToolbar);
 	
