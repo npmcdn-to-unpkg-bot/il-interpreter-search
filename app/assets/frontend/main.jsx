@@ -15,14 +15,23 @@ class Main extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { interpretersList: [], menuList: mockLanguages}
+    this.state = { interpretersList: [], menuList: mockLanguages }
+
   }
 
   componentDidMount() {
     $.ajax("/interpreters")
     .success(data => this.setState({ interpretersList: data}))
     .error(error => console.log(error));
+    this.extendMenu();
   }
+
+  extendMenu () {
+    $.ajax("/default_menu_sort?menu=extended")
+    .success(menu => this.setState({ menuList: menu}))
+    .error(error => console.log(error));
+  }
+
 
   render() {
     return (

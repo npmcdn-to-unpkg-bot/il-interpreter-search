@@ -86,6 +86,7 @@
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Main).call(this, props));
 	
 	    _this.state = { interpretersList: [], menuList: mockLanguages };
+	
 	    return _this;
 	  }
 	
@@ -96,6 +97,18 @@
 	
 	      $.ajax("/interpreters").success(function (data) {
 	        return _this2.setState({ interpretersList: data });
+	      }).error(function (error) {
+	        return console.log(error);
+	      });
+	      this.extendMenu();
+	    }
+	  }, {
+	    key: 'extendMenu',
+	    value: function extendMenu() {
+	      var _this3 = this;
+	
+	      $.ajax("/default_menu_sort?menu=extended").success(function (menu) {
+	        return _this3.setState({ menuList: menu });
 	      }).error(function (error) {
 	        return console.log(error);
 	      });
@@ -23974,8 +23987,6 @@
 	  value: true
 	});
 	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
 	var _reactcss = __webpack_require__(/*! reactcss */ 5);
@@ -24025,7 +24036,7 @@
 	    value: function render() {
 	
 	      var links = this.props.languages.map(function (link) {
-	        return React.createElement(_Language2.default, _extends({ key: link.lid }, link));
+	        return React.createElement(_Language2.default, link);
 	      });
 	      var total = this.props.languages.length;
 	
