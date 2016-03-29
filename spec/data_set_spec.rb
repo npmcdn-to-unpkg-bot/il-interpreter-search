@@ -17,33 +17,31 @@ describe DataSet do
         end
 
         it 'returns KNOWN ENTRY (for language) other attributes as assigned correctly and does not raise a xlsx error' do
-          # well_formatted_excel = "#{SAMPLE_DATA}"
-          # DataSet.import_xlsx(well_formatted_excel)
-          # result = Interpreter.find_by(aoicid: 1224)
           expect(@result.language).to eq("Spanish")
         end
         it 'returns KNOWN ENTRY (for email) other attributes as assigned correctly and does not raise a xlsx error' do
-          # well_formatted_excel = "#{SAMPLE_DATA}"
-          # DataSet.import_xlsx(well_formatted_excel)
-          # result = Interpreter.find_by(aoicid: 1224)
           expect(@result.reg_email).to eq("paccha+spa@gmail.com")
         end
         it 'returns KNOWN ENTRY (for zipcode) other attributes as assigned correctly and does not raise a xlsx error' do
-          # well_formatted_excel = "#{SAMPLE_DATA}"
-          # DataSet.import_xlsx(well_formatted_excel)
-          # result = Interpreter.find_by(aoicid: 1224)
           expect(@result.zip).to eq(60608)
         end
         it 'returns KNOWN ENTRY (circuit avaibility) other attributes as assigned correctly and does not raise a xlsx error' do
           expect(@result.circuit_availability).to eq("Cook")
         end
-
-
-
       end
 
 
+      context 'First row return a normal and not wierd entry.' do
+        before(:all) do
+          well_formatted_excel = "#{SAMPLE_DATA}"
+          DataSet.import_xlsx(well_formatted_excel)
+          @result = Interpreter.first
+        end
 
+        it 'returns KNOWN ENTRY (for language) other attributes as assigned correctly and does not raise a xlsx error' do
+          expect(@result.aoicid.is_a? Integer).to eq(true)
+        end
+      end
 
 
 

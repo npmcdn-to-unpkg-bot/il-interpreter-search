@@ -75,7 +75,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var mockLanguages = [{ lid: 100, language: "spanish", count: 123 }, { lid: 200, language: "tagalog", count: 234 }, { lid: 300, language: "japanese", count: 345 }, { lid: 400, language: "polish", count: 456 }];
+	var mockLanguages = [{ lid: 100, language: "spanish", count: 1 }, { lid: 200, language: "tagalog", count: 23 }, { lid: 300, language: "japanese", count: 345 }, { lid: 400, language: "polish", count: 4567 }];
 	
 	var Main = function (_React$Component) {
 	  _inherits(Main, _React$Component);
@@ -85,7 +85,7 @@
 	
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Main).call(this, props));
 	
-	    _this.state = { interpretersList: [] };
+	    _this.state = { interpretersList: [], menuList: mockLanguages };
 	    return _this;
 	  }
 	
@@ -106,7 +106,7 @@
 	      return React.createElement(
 	        'div',
 	        null,
-	        React.createElement(_LanguageList2.default, { languages: mockLanguages }),
+	        React.createElement(_LanguageList2.default, { languages: this.state.menuList }),
 	        React.createElement(_DataFilters2.default, null),
 	        React.createElement(_DataList2.default, { entries: this.state.interpretersList })
 	      );
@@ -24104,7 +24104,10 @@
 	        React.createElement(
 	          "a",
 	          { href: "#intdb-spanish", className: "h6 caps bold inline-block py1 color-inherit text-decoration-none hover-underline underline" },
-	          this.props.language
+	          this.props.language,
+	          " (",
+	          this.props.count,
+	          ")"
 	        )
 	      );
 	    }

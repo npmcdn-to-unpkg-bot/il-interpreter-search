@@ -5,17 +5,17 @@ import LanguageList from './components/LanguageList';
 
 
 let mockLanguages = [
-  { lid: 100, language: "spanish", count: 123 },
-  { lid: 200, language: "tagalog", count: 234 },
+  { lid: 100, language: "spanish", count: 1 },
+  { lid: 200, language: "tagalog", count: 23 },
   { lid: 300, language: "japanese", count: 345 },
-  { lid: 400, language: "polish", count: 456 }
+  { lid: 400, language: "polish", count: 4567 }
 ]
 
 class Main extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { interpretersList: []}
+    this.state = { interpretersList: [], menuList: mockLanguages}
   }
 
   componentDidMount() {
@@ -27,7 +27,7 @@ class Main extends React.Component {
   render() {
     return (
       <div>
-        <LanguageList languages={mockLanguages} />
+        <LanguageList languages={this.state.menuList} />
         <DataFilters  />
         <DataList entries={this.state.interpretersList} />
       </div>

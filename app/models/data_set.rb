@@ -66,7 +66,7 @@ class DataSet
 
         if REQUIRED_HEADERS.include? header
 #          puts "(required header) Header is: #{header}"
-          first_row += 1
+          # first_row += 1
 
           (first_row..last_row).each do |r|
             new_id = sheet.cell(r, new_id_column)
