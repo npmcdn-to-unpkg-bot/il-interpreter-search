@@ -6,7 +6,7 @@ class InterpretersController < ApplicationController
 
   def default_menu_sort
     if params[:menu] == "extended"
-      render json: Interpreter.sort_by_language.map {|k,v| {language: k, count: v } }
+      render json: Interpreter.sort_by_language.each_with_index.map {|(k,v), index| {lid: index, language: k, count: v } }
     else
       render json: Interpreter.sort_by_language.first(4)
     end

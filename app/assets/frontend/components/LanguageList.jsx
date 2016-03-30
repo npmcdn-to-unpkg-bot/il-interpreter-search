@@ -23,7 +23,7 @@ export default class LanguageList extends ReactCSS.Component {
 
   render() {
 
-    let links = this.props.languages.map(link => <Language {...link} />);
+    let links = this.props.languages.map(link => <Language key={link.lid} {...link} />);
     let total = this.props.languages.length;
 
     return (
@@ -34,9 +34,6 @@ export default class LanguageList extends ReactCSS.Component {
             { links }
           </div>
         </div>
-
-
-
       </div>
     )
   }
