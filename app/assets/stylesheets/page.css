@@ -3,3 +3,7 @@ nav, p, th{font-family: 'Raleway', sans-serif;}
 thead {
   background-color: rgba(222,222,183, 0.3);
 }
+
+td {
+  font-size: 13px;
+}

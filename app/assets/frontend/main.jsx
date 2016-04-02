@@ -1,22 +1,16 @@
+
 import Content from './components/Content';
 import DataList from './components/DataList';
-import DataFilters from './components/DataFilters';
 import LanguageList from './components/LanguageList';
 
-
-let mockLanguages = [
-  { lid: 100, language: "spanish", count: 1 },
-  { lid: 200, language: "tagalog", count: 23 },
-  { lid: 300, language: "japanese", count: 345 },
-  { lid: 400, language: "polish", count: 4567 }
-]
+import InterpreterTypeSelector from './components/InterpreterTypeSelector';
+import CredentialLevelSelector from './components/CredentialLevelSelector';
 
 class Main extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { interpretersList: [], menuList: mockLanguages }
-
+    this.state = { interpretersList: [], menuList: [], filterDepth: "intro" }
   }
 
   componentDidMount() {
@@ -26,18 +20,55 @@ class Main extends React.Component {
     this.extendMenu();
   }
 
-  extendMenu () {
-    $.ajax("/default_menu_sort?menu=extended")
-    .success(menu => this.setState({ menuList: menu}))
+  extendMenu (languageType) {
+    let newLanguageType = languageType
+
+    console.log("(extendMenu fn) depth is: ", this.state.filterDepth);
+    $.ajax("/default_menu_sort?menu=" + languageType)
+    .success(menu => this.setState({ menuList: menu }))
     .error(error => console.log(error));
   }
+
+  addDataFilter (selection) {
+    let newFilterDepth = selection
+    console.log(selection, ": incoming selection")
+
+    switch (selection) {
+      case "asl": {
+        console.log(selection, "-> should be asl only");
+        this.extendMenu(selection);
+      }
+        break;
+      case "lep": {
+        console.log(selection, "-> should be lep onlly");
+        this.extendMenu(selection);
+      }
+
+        break;
+      default: {
+        console.log(3, "default nothing");
+        // this.extendMenu();
+      }
+
+
+    }
+    this.setState({filterDepth: newFilterDepth})
+  };
 
 
   render() {
     return (
       <div>
+        <InterpreterTypeSelector
+          asl={this.state.filterDepth == "asl" ? true : null}
+          sendDataSelection={this.addDataFilter.bind(this)}
+          lep={this.state.filterDepth == "lep" ? true : null}  />
+        
         <LanguageList languages={this.state.menuList} />
-        <DataFilters  />
+
+
+        <CredentialLevelSelector sendDataSelection={this.addDataFilter.bind(this)} />
+
         <DataList entries={this.state.interpretersList} />
       </div>
     );
