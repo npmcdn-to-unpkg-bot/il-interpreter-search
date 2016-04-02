@@ -25,10 +25,11 @@ export default class LanguageList extends ReactCSS.Component {
 
     let links = this.props.languages.map(link => <Language key={link.lid} {...link} />);
     let total = this.props.languages.length;
+    let type = this.props.shownType;
 
     return (
       <div className="py4 mx2">
-        <p is="subtext">There are <span is="count"><strong >{total}</strong></span> languages are registered in this database.</p>
+        <p is="subtext">{total == 1 ? "" : "There are"} <span is="count">{ type == "intro" ? total : total }</span>  {type} languages registered in this database. </p>
         <div id="nav-secondary" className="pl2 my2 border-left border-thick border-darken" >
           <div className="mxn2 flex flex-wrap">
             { links }

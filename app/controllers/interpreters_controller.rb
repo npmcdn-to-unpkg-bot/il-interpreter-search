@@ -1,8 +1,8 @@
 class InterpretersController < ApplicationController
   def index
 
-    # @interpreters_by_language = Interpreter.all.where('aoicid > 0').order("random()").first(10)
-    @interpreters_by_language = Interpreter.all.where('aoicid > 0').order(aoicid: :desc).first(10)
+    @interpreters_by_language = Interpreter.all.where('aoicid > 0').order("random()").first(10)
+    # @interpreters_by_language = Interpreter.all.where('aoicid > 0').order(aoicid: :desc).first(10)
     render json: @interpreters_by_language
   end
 

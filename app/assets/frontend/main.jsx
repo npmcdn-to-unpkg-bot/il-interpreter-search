@@ -63,8 +63,8 @@ class Main extends React.Component {
           asl={this.state.filterDepth == "asl" ? true : null}
           sendDataSelection={this.addDataFilter.bind(this)}
           lep={this.state.filterDepth == "lep" ? true : null}  />
-        
-        <LanguageList languages={this.state.menuList} />
+
+        <LanguageList shownType={this.state.filterDepth} languages={this.state.menuList} />
 
 
         <CredentialLevelSelector sendDataSelection={this.addDataFilter.bind(this)} />

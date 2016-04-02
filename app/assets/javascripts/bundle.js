@@ -156,7 +156,7 @@
 	          asl: this.state.filterDepth == "asl" ? true : null,
 	          sendDataSelection: this.addDataFilter.bind(this),
 	          lep: this.state.filterDepth == "lep" ? true : null }),
-	        React.createElement(_LanguageList2.default, { languages: this.state.menuList }),
+	        React.createElement(_LanguageList2.default, { shownType: this.state.filterDepth, languages: this.state.menuList }),
 	        React.createElement(_CredentialLevelSelector2.default, { sendDataSelection: this.addDataFilter.bind(this) }),
 	        React.createElement(_DataList2.default, { entries: this.state.interpretersList })
 	      );
@@ -486,6 +486,7 @@
 	        return React.createElement(_Language2.default, _extends({ key: link.lid }, link));
 	      });
 	      var total = this.props.languages.length;
+	      var type = this.props.shownType;
 	
 	      return React.createElement(
 	        "div",
@@ -493,17 +494,16 @@
 	        React.createElement(
 	          "p",
 	          { style: this.styles().subtext },
-	          "There are ",
+	          total == 1 ? "" : "There are",
+	          " ",
 	          React.createElement(
 	            "span",
 	            { style: this.styles().count },
-	            React.createElement(
-	              "strong",
-	              null,
-	              total
-	            )
+	            type == "intro" ? total : total
 	          ),
-	          " languages are registered in this database."
+	          "  ",
+	          type,
+	          " languages registered in this database. "
 	        ),
 	        React.createElement(
 	          "div",
