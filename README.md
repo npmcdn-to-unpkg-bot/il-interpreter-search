@@ -2,13 +2,13 @@ Interpreters In Illinois
 =================
 
 ##### What is this?
-A rails project for people looking for competent interpreters for anything legal-related.
+A rails project focusing on users looking for competent interpreters.
 
 ##### What problem does this solve?
-Existing registry at https://publicapps.illinoiscourts.gov/ may not clarify different types of professionals
+Existing registry at https://publicapps.illinoiscourts.gov/ may need a new look.
 
 ##### Project background
-Among other things, let's have the registry try a new look
+Among other things, let's have the registry try a new look.
 
 ##### Dependencies
 ruby 2.3.0
@@ -18,7 +18,7 @@ frontend: webpack
 development that might include some scraping
 
 ## How to use this
-Search by Filtering Profession Types
+Search by Filter in stepwise fashion.
 
 ## How to set up the development code (for the nerds)
 after cloning the project, setting up rails environment,
@@ -30,7 +30,7 @@ Rene M.,
 pending more.
 
 ## How to Contribute
-Pull requests welcome, also are issues
+Pull requests welcome, issues also.
 
 ## Copyright
 2016
