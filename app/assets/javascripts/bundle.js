@@ -67,7 +67,7 @@
 	
 	var _InterpreterTypeSelector2 = _interopRequireDefault(_InterpreterTypeSelector);
 	
-	var _CredentialLevelSelector = __webpack_require__(/*! ./components/CredentialLevelSelector */ 209);
+	var _CredentialLevelSelector = __webpack_require__(/*! ./components/CredentialLevelSelector */ 254);
 	
 	var _CredentialLevelSelector2 = _interopRequireDefault(_CredentialLevelSelector);
 	
@@ -135,6 +135,12 @@
 	            console.log(selection, "-> should be lep onlly");
 	            this.extendMenu(selection);
 	          }
+	        case "spanish":
+	          {
+	            console.log(selection, "-> should be spanish only");
+	            console.log(selection, "-> language=spanish");
+	            this.extendMenu(selection);
+	          }
 	
 	          break;
 	        default:
@@ -152,6 +158,7 @@
 	      return React.createElement(
 	        'div',
 	        null,
+	        React.createElement(_Content2.default, null),
 	        React.createElement(_InterpreterTypeSelector2.default, {
 	          asl: this.state.filterDepth == "asl" ? true : null,
 	          sendDataSelection: this.addDataFilter.bind(this),
@@ -177,15 +184,21 @@
 /*!****************************************************!*\
   !*** ./app/assets/frontend/components/Content.jsx ***!
   \****************************************************/
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 7);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -203,22 +216,22 @@
 	  }
 	
 	  _createClass(Content, [{
-	    key: "render",
+	    key: 'render',
 	    value: function render() {
-	      return React.createElement(
-	        "div",
-	        { style: this.styles().modal },
-	        React.createElement(
-	          "h3",
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	          'h3',
 	          null,
-	          " The state of Illinois has has a new Interpretation Certification process."
+	          ' Some states have a database of court interpreters.'
 	        )
 	      );
 	    }
 	  }]);
 	
 	  return Content;
-	}(React.Component);
+	}(_react2.default.Component);
 	
 	exports.default = Content;
 
@@ -20973,15 +20986,24 @@
 	  }
 	
 	  _createClass(Language, [{
+	    key: "passLanguageToFilter",
+	    value: function passLanguageToFilter(event) {
+	      event.preventDefault();
+	      console.log(4, "This is the language: " + this.refs.value);
+	    }
+	  }, {
 	    key: "render",
 	    value: function render() {
+	
+	      var language = this.props.language;
+	
 	      return React.createElement(
 	        "div",
-	        { className: "px2 col-6 sm-col-4 md-col-3  " },
+	        { className: "px2 col-6 sm-col-4 md-col-3 " },
 	        React.createElement(
 	          "a",
-	          { href: "#intdb-spanish", className: "h6 caps bold inline-block py1 color-inherit text-decoration-none hover-underline underline" },
-	          this.props.language,
+	          { ref: language, href: "#datalist", className: "h6 caps bold inline-block py1 color-inherit text-decoration-none hover-underline underline" },
+	          language,
 	          " (",
 	          this.props.count,
 	          ")"
@@ -21026,7 +21048,7 @@
 	
 	var _reactcss2 = _interopRequireDefault(_reactcss);
 	
-	var _reactColor = __webpack_require__(/*! react-color */ 215);
+	var _reactColor = __webpack_require__(/*! react-color */ 209);
 	
 	var _reactColor2 = _interopRequireDefault(_reactColor);
 	
@@ -22381,123 +22403,6 @@
 
 /***/ },
 /* 209 */
-/*!********************************************************************!*\
-  !*** ./app/assets/frontend/components/CredentialLevelSelector.jsx ***!
-  \********************************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _Button = __webpack_require__(/*! react-bootstrap/lib/Button */ 204);
-	
-	var _Button2 = _interopRequireDefault(_Button);
-	
-	var _ButtonGroup = __webpack_require__(/*! react-bootstrap/lib/ButtonGroup */ 207);
-	
-	var _ButtonGroup2 = _interopRequireDefault(_ButtonGroup);
-	
-	var _ButtonToolbar = __webpack_require__(/*! react-bootstrap/lib/ButtonToolbar */ 175);
-	
-	var _ButtonToolbar2 = _interopRequireDefault(_ButtonToolbar);
-	
-	var _reactcss = __webpack_require__(/*! reactcss */ 5);
-	
-	var _reactcss2 = _interopRequireDefault(_reactcss);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var CredentialLevelSelector = function (_ReactCSS$Component) {
-	  _inherits(CredentialLevelSelector, _ReactCSS$Component);
-	
-	  function CredentialLevelSelector() {
-	    _classCallCheck(this, CredentialLevelSelector);
-	
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(CredentialLevelSelector).apply(this, arguments));
-	  }
-	
-	  _createClass(CredentialLevelSelector, [{
-	    key: 'classes',
-	    value: function classes() {
-	      return {
-	        "default": {
-	          spacer: {
-	            paddingBottom: "20px"
-	          }
-	        }
-	      };
-	    }
-	  }, {
-	    key: 'sendCredSelection',
-	    value: function sendCredSelection(event) {
-	      event.preventDefault();
-	      this.props.sendCredSelection(this.refs.master.value);
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      return React.createElement(
-	        'div',
-	        { style: this.styles().spacer, className: 'clearfix' },
-	        React.createElement(
-	          'div',
-	          { className: 'right' },
-	          React.createElement(
-	            _ButtonToolbar2.default,
-	            null,
-	            React.createElement(
-	              _ButtonGroup2.default,
-	              { bsSize: 'small' },
-	              React.createElement(
-	                _Button2.default,
-	                { ref: 'master', onClick: this.sendCredSelection.bind(this) },
-	                'Master'
-	              ),
-	              React.createElement(
-	                _Button2.default,
-	                { ref: 'advanced', onClick: this.sendCredSelection.bind(this) },
-	                'Advanced'
-	              ),
-	              React.createElement(
-	                _Button2.default,
-	                null,
-	                'Registered'
-	              ),
-	              React.createElement(
-	                _Button2.default,
-	                null,
-	                'Certified'
-	              )
-	            )
-	          )
-	        )
-	      );
-	    }
-	  }]);
-	
-	  return CredentialLevelSelector;
-	}(_reactcss2.default.Component);
-	
-	exports.default = CredentialLevelSelector;
-
-/***/ },
-/* 210 */,
-/* 211 */,
-/* 212 */,
-/* 213 */,
-/* 214 */,
-/* 215 */
 /*!************************************!*\
   !*** ./~/react-color/lib/index.js ***!
   \************************************/
@@ -22510,7 +22415,7 @@
 	});
 	exports.default = exports.CustomPicker = exports.SwatchesPicker = exports.SliderPicker = exports.SketchPicker = exports.PhotoshopPicker = exports.MaterialPicker = exports.CompactPicker = exports.ChromePicker = undefined;
 	
-	var _Chrome = __webpack_require__(/*! ./components/chrome/Chrome */ 216);
+	var _Chrome = __webpack_require__(/*! ./components/chrome/Chrome */ 210);
 	
 	Object.defineProperty(exports, 'ChromePicker', {
 	  enumerable: true,
@@ -22519,7 +22424,7 @@
 	  }
 	});
 	
-	var _Compact = __webpack_require__(/*! ./components/compact/Compact */ 234);
+	var _Compact = __webpack_require__(/*! ./components/compact/Compact */ 228);
 	
 	Object.defineProperty(exports, 'CompactPicker', {
 	  enumerable: true,
@@ -22528,7 +22433,7 @@
 	  }
 	});
 	
-	var _Material = __webpack_require__(/*! ./components/material/Material */ 244);
+	var _Material = __webpack_require__(/*! ./components/material/Material */ 238);
 	
 	Object.defineProperty(exports, 'MaterialPicker', {
 	  enumerable: true,
@@ -22537,7 +22442,7 @@
 	  }
 	});
 	
-	var _Photoshop = __webpack_require__(/*! ./components/photoshop/Photoshop */ 245);
+	var _Photoshop = __webpack_require__(/*! ./components/photoshop/Photoshop */ 239);
 	
 	Object.defineProperty(exports, 'PhotoshopPicker', {
 	  enumerable: true,
@@ -22546,7 +22451,7 @@
 	  }
 	});
 	
-	var _Sketch = __webpack_require__(/*! ./components/sketched/Sketch */ 249);
+	var _Sketch = __webpack_require__(/*! ./components/sketched/Sketch */ 243);
 	
 	Object.defineProperty(exports, 'SketchPicker', {
 	  enumerable: true,
@@ -22555,7 +22460,7 @@
 	  }
 	});
 	
-	var _Slider = __webpack_require__(/*! ./components/slider/Slider */ 252);
+	var _Slider = __webpack_require__(/*! ./components/slider/Slider */ 246);
 	
 	Object.defineProperty(exports, 'SliderPicker', {
 	  enumerable: true,
@@ -22564,7 +22469,7 @@
 	  }
 	});
 	
-	var _Swatches = __webpack_require__(/*! ./components/swatches/Swatches */ 256);
+	var _Swatches = __webpack_require__(/*! ./components/swatches/Swatches */ 250);
 	
 	Object.defineProperty(exports, 'SwatchesPicker', {
 	  enumerable: true,
@@ -22573,7 +22478,7 @@
 	  }
 	});
 	
-	var _ColorWrap = __webpack_require__(/*! ./components/common/ColorWrap */ 227);
+	var _ColorWrap = __webpack_require__(/*! ./components/common/ColorWrap */ 221);
 	
 	Object.defineProperty(exports, 'CustomPicker', {
 	  enumerable: true,
@@ -22589,7 +22494,7 @@
 	exports.default = _Chrome2.default;
 
 /***/ },
-/* 216 */
+/* 210 */
 /*!*******************************************************!*\
   !*** ./~/react-color/lib/components/chrome/Chrome.js ***!
   \*******************************************************/
@@ -22613,21 +22518,21 @@
 	
 	var _reactcss2 = _interopRequireDefault(_reactcss);
 	
-	var _common = __webpack_require__(/*! ../common */ 217);
+	var _common = __webpack_require__(/*! ../common */ 211);
 	
-	var _ChromeFields = __webpack_require__(/*! ./ChromeFields */ 231);
+	var _ChromeFields = __webpack_require__(/*! ./ChromeFields */ 225);
 	
 	var _ChromeFields2 = _interopRequireDefault(_ChromeFields);
 	
-	var _ChromePointer = __webpack_require__(/*! ./ChromePointer */ 232);
+	var _ChromePointer = __webpack_require__(/*! ./ChromePointer */ 226);
 	
 	var _ChromePointer2 = _interopRequireDefault(_ChromePointer);
 	
-	var _ChromePointerCircle = __webpack_require__(/*! ./ChromePointerCircle */ 233);
+	var _ChromePointerCircle = __webpack_require__(/*! ./ChromePointerCircle */ 227);
 	
 	var _ChromePointerCircle2 = _interopRequireDefault(_ChromePointerCircle);
 	
-	var _reactAddonsShallowCompare = __webpack_require__(/*! react-addons-shallow-compare */ 219);
+	var _reactAddonsShallowCompare = __webpack_require__(/*! react-addons-shallow-compare */ 213);
 	
 	var _reactAddonsShallowCompare2 = _interopRequireDefault(_reactAddonsShallowCompare);
 	
@@ -22780,7 +22685,7 @@
 	exports.default = (0, _common.ColorWrap)(Chrome);
 
 /***/ },
-/* 217 */
+/* 211 */
 /*!******************************************************!*\
   !*** ./~/react-color/lib/components/common/index.js ***!
   \******************************************************/
@@ -22792,7 +22697,7 @@
 	  value: true
 	});
 	
-	var _Alpha = __webpack_require__(/*! ./Alpha */ 218);
+	var _Alpha = __webpack_require__(/*! ./Alpha */ 212);
 	
 	Object.defineProperty(exports, 'Alpha', {
 	  enumerable: true,
@@ -22801,7 +22706,7 @@
 	  }
 	});
 	
-	var _Checkboard = __webpack_require__(/*! ./Checkboard */ 221);
+	var _Checkboard = __webpack_require__(/*! ./Checkboard */ 215);
 	
 	Object.defineProperty(exports, 'Checkboard', {
 	  enumerable: true,
@@ -22810,7 +22715,7 @@
 	  }
 	});
 	
-	var _EditableInput = __webpack_require__(/*! ./EditableInput */ 222);
+	var _EditableInput = __webpack_require__(/*! ./EditableInput */ 216);
 	
 	Object.defineProperty(exports, 'EditableInput', {
 	  enumerable: true,
@@ -22819,7 +22724,7 @@
 	  }
 	});
 	
-	var _Hue = __webpack_require__(/*! ./Hue */ 223);
+	var _Hue = __webpack_require__(/*! ./Hue */ 217);
 	
 	Object.defineProperty(exports, 'Hue', {
 	  enumerable: true,
@@ -22828,7 +22733,7 @@
 	  }
 	});
 	
-	var _Saturation = __webpack_require__(/*! ./Saturation */ 224);
+	var _Saturation = __webpack_require__(/*! ./Saturation */ 218);
 	
 	Object.defineProperty(exports, 'Saturation', {
 	  enumerable: true,
@@ -22837,7 +22742,7 @@
 	  }
 	});
 	
-	var _ColorWrap = __webpack_require__(/*! ./ColorWrap */ 227);
+	var _ColorWrap = __webpack_require__(/*! ./ColorWrap */ 221);
 	
 	Object.defineProperty(exports, 'ColorWrap', {
 	  enumerable: true,
@@ -22849,7 +22754,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ },
-/* 218 */
+/* 212 */
 /*!******************************************************!*\
   !*** ./~/react-color/lib/components/common/Alpha.js ***!
   \******************************************************/
@@ -22871,11 +22776,11 @@
 	
 	var _reactcss2 = _interopRequireDefault(_reactcss);
 	
-	var _reactAddonsShallowCompare = __webpack_require__(/*! react-addons-shallow-compare */ 219);
+	var _reactAddonsShallowCompare = __webpack_require__(/*! react-addons-shallow-compare */ 213);
 	
 	var _reactAddonsShallowCompare2 = _interopRequireDefault(_reactAddonsShallowCompare);
 	
-	var _Checkboard = __webpack_require__(/*! ./Checkboard */ 221);
+	var _Checkboard = __webpack_require__(/*! ./Checkboard */ 215);
 	
 	var _Checkboard2 = _interopRequireDefault(_Checkboard);
 	
@@ -23017,16 +22922,16 @@
 	exports.default = Alpha;
 
 /***/ },
-/* 219 */
+/* 213 */
 /*!*************************************************!*\
   !*** ./~/react-addons-shallow-compare/index.js ***!
   \*************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(/*! react/lib/shallowCompare */ 220);
+	module.exports = __webpack_require__(/*! react/lib/shallowCompare */ 214);
 
 /***/ },
-/* 220 */
+/* 214 */
 /*!***************************************!*\
   !*** ./~/react/lib/shallowCompare.js ***!
   \***************************************/
@@ -23058,7 +22963,7 @@
 	module.exports = shallowCompare;
 
 /***/ },
-/* 221 */
+/* 215 */
 /*!***********************************************************!*\
   !*** ./~/react-color/lib/components/common/Checkboard.js ***!
   \***********************************************************/
@@ -23080,7 +22985,7 @@
 	
 	var _reactcss2 = _interopRequireDefault(_reactcss);
 	
-	var _reactAddonsShallowCompare = __webpack_require__(/*! react-addons-shallow-compare */ 219);
+	var _reactAddonsShallowCompare = __webpack_require__(/*! react-addons-shallow-compare */ 213);
 	
 	var _reactAddonsShallowCompare2 = _interopRequireDefault(_reactAddonsShallowCompare);
 	
@@ -23170,7 +23075,7 @@
 	exports.default = Checkboard;
 
 /***/ },
-/* 222 */
+/* 216 */
 /*!**************************************************************!*\
   !*** ./~/react-color/lib/components/common/EditableInput.js ***!
   \**************************************************************/
@@ -23192,7 +23097,7 @@
 	
 	var _reactcss2 = _interopRequireDefault(_reactcss);
 	
-	var _reactAddonsShallowCompare = __webpack_require__(/*! react-addons-shallow-compare */ 219);
+	var _reactAddonsShallowCompare = __webpack_require__(/*! react-addons-shallow-compare */ 213);
 	
 	var _reactAddonsShallowCompare2 = _interopRequireDefault(_reactAddonsShallowCompare);
 	
@@ -23368,7 +23273,7 @@
 	exports.default = EditableInput;
 
 /***/ },
-/* 223 */
+/* 217 */
 /*!****************************************************!*\
   !*** ./~/react-color/lib/components/common/Hue.js ***!
   \****************************************************/
@@ -23390,7 +23295,7 @@
 	
 	var _reactcss2 = _interopRequireDefault(_reactcss);
 	
-	var _reactAddonsShallowCompare = __webpack_require__(/*! react-addons-shallow-compare */ 219);
+	var _reactAddonsShallowCompare = __webpack_require__(/*! react-addons-shallow-compare */ 213);
 	
 	var _reactAddonsShallowCompare2 = _interopRequireDefault(_reactAddonsShallowCompare);
 	
@@ -23548,7 +23453,7 @@
 	exports.default = Hue;
 
 /***/ },
-/* 224 */
+/* 218 */
 /*!***********************************************************!*\
   !*** ./~/react-color/lib/components/common/Saturation.js ***!
   \***********************************************************/
@@ -23570,11 +23475,11 @@
 	
 	var _reactcss2 = _interopRequireDefault(_reactcss);
 	
-	var _lodash = __webpack_require__(/*! lodash.throttle */ 225);
+	var _lodash = __webpack_require__(/*! lodash.throttle */ 219);
 	
 	var _lodash2 = _interopRequireDefault(_lodash);
 	
-	var _reactAddonsShallowCompare = __webpack_require__(/*! react-addons-shallow-compare */ 219);
+	var _reactAddonsShallowCompare = __webpack_require__(/*! react-addons-shallow-compare */ 213);
 	
 	var _reactAddonsShallowCompare2 = _interopRequireDefault(_reactAddonsShallowCompare);
 	
@@ -23717,7 +23622,7 @@
 	exports.default = Saturation;
 
 /***/ },
-/* 225 */
+/* 219 */
 /*!************************************!*\
   !*** ./~/lodash.throttle/index.js ***!
   \************************************/
@@ -23731,7 +23636,7 @@
 	 * Copyright 2009-2016 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var debounce = __webpack_require__(/*! lodash.debounce */ 226);
+	var debounce = __webpack_require__(/*! lodash.debounce */ 220);
 	
 	/** Used as the `TypeError` message for "Functions" methods. */
 	var FUNC_ERROR_TEXT = 'Expected a function';
@@ -23826,7 +23731,7 @@
 
 
 /***/ },
-/* 226 */
+/* 220 */
 /*!************************************!*\
   !*** ./~/lodash.debounce/index.js ***!
   \************************************/
@@ -24155,7 +24060,7 @@
 
 
 /***/ },
-/* 227 */
+/* 221 */
 /*!**********************************************************!*\
   !*** ./~/react-color/lib/components/common/ColorWrap.js ***!
   \**********************************************************/
@@ -24179,19 +24084,19 @@
 	
 	var _merge2 = _interopRequireDefault(_merge);
 	
-	var _lodash = __webpack_require__(/*! lodash.isplainobject */ 228);
+	var _lodash = __webpack_require__(/*! lodash.isplainobject */ 222);
 	
 	var _lodash2 = _interopRequireDefault(_lodash);
 	
-	var _lodash3 = __webpack_require__(/*! lodash.debounce */ 226);
+	var _lodash3 = __webpack_require__(/*! lodash.debounce */ 220);
 	
 	var _lodash4 = _interopRequireDefault(_lodash3);
 	
-	var _color = __webpack_require__(/*! ../../helpers/color */ 229);
+	var _color = __webpack_require__(/*! ../../helpers/color */ 223);
 	
 	var _color2 = _interopRequireDefault(_color);
 	
-	var _reactAddonsShallowCompare = __webpack_require__(/*! react-addons-shallow-compare */ 219);
+	var _reactAddonsShallowCompare = __webpack_require__(/*! react-addons-shallow-compare */ 213);
 	
 	var _reactAddonsShallowCompare2 = _interopRequireDefault(_reactAddonsShallowCompare);
 	
@@ -24266,7 +24171,7 @@
 	exports.default = ColorWrap;
 
 /***/ },
-/* 228 */
+/* 222 */
 /*!*****************************************!*\
   !*** ./~/lodash.isplainobject/index.js ***!
   \*****************************************/
@@ -24393,7 +24298,7 @@
 
 
 /***/ },
-/* 229 */
+/* 223 */
 /*!********************************************!*\
   !*** ./~/react-color/lib/helpers/color.js ***!
   \********************************************/
@@ -24404,7 +24309,7 @@
 	  value: true
 	});
 	
-	var _tinycolor = __webpack_require__(/*! ../../modules/tinycolor2 */ 230);
+	var _tinycolor = __webpack_require__(/*! ../../modules/tinycolor2 */ 224);
 	
 	var _tinycolor2 = _interopRequireDefault(_tinycolor);
 	
@@ -24456,7 +24361,7 @@
 	};
 
 /***/ },
-/* 230 */
+/* 224 */
 /*!***************************************************!*\
   !*** ./~/react-color/modules/tinycolor2/index.js ***!
   \***************************************************/
@@ -25631,7 +25536,7 @@
 
 
 /***/ },
-/* 231 */
+/* 225 */
 /*!*************************************************************!*\
   !*** ./~/react-color/lib/components/chrome/ChromeFields.js ***!
   \*************************************************************/
@@ -25655,15 +25560,15 @@
 	
 	var _reactcss2 = _interopRequireDefault(_reactcss);
 	
-	var _color = __webpack_require__(/*! ../../helpers/color */ 229);
+	var _color = __webpack_require__(/*! ../../helpers/color */ 223);
 	
 	var _color2 = _interopRequireDefault(_color);
 	
-	var _reactAddonsShallowCompare = __webpack_require__(/*! react-addons-shallow-compare */ 219);
+	var _reactAddonsShallowCompare = __webpack_require__(/*! react-addons-shallow-compare */ 213);
 	
 	var _reactAddonsShallowCompare2 = _interopRequireDefault(_reactAddonsShallowCompare);
 	
-	var _common = __webpack_require__(/*! ../common */ 217);
+	var _common = __webpack_require__(/*! ../common */ 211);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -25916,7 +25821,7 @@
 	exports.default = ChromeFields;
 
 /***/ },
-/* 232 */
+/* 226 */
 /*!**************************************************************!*\
   !*** ./~/react-color/lib/components/chrome/ChromePointer.js ***!
   \**************************************************************/
@@ -25938,7 +25843,7 @@
 	
 	var _reactcss2 = _interopRequireDefault(_reactcss);
 	
-	var _reactAddonsShallowCompare = __webpack_require__(/*! react-addons-shallow-compare */ 219);
+	var _reactAddonsShallowCompare = __webpack_require__(/*! react-addons-shallow-compare */ 213);
 	
 	var _reactAddonsShallowCompare2 = _interopRequireDefault(_reactAddonsShallowCompare);
 	
@@ -25996,7 +25901,7 @@
 	exports.default = ChromePointer;
 
 /***/ },
-/* 233 */
+/* 227 */
 /*!********************************************************************!*\
   !*** ./~/react-color/lib/components/chrome/ChromePointerCircle.js ***!
   \********************************************************************/
@@ -26018,7 +25923,7 @@
 	
 	var _reactcss2 = _interopRequireDefault(_reactcss);
 	
-	var _reactAddonsShallowCompare = __webpack_require__(/*! react-addons-shallow-compare */ 219);
+	var _reactAddonsShallowCompare = __webpack_require__(/*! react-addons-shallow-compare */ 213);
 	
 	var _reactAddonsShallowCompare2 = _interopRequireDefault(_reactAddonsShallowCompare);
 	
@@ -26075,7 +25980,7 @@
 	exports.default = ChromePointerCircle;
 
 /***/ },
-/* 234 */
+/* 228 */
 /*!*********************************************************!*\
   !*** ./~/react-color/lib/components/compact/Compact.js ***!
   \*********************************************************/
@@ -26099,23 +26004,23 @@
 	
 	var _reactcss2 = _interopRequireDefault(_reactcss);
 	
-	var _color = __webpack_require__(/*! ../../helpers/color */ 229);
+	var _color = __webpack_require__(/*! ../../helpers/color */ 223);
 	
 	var _color2 = _interopRequireDefault(_color);
 	
-	var _reactAddonsShallowCompare = __webpack_require__(/*! react-addons-shallow-compare */ 219);
+	var _reactAddonsShallowCompare = __webpack_require__(/*! react-addons-shallow-compare */ 213);
 	
 	var _reactAddonsShallowCompare2 = _interopRequireDefault(_reactAddonsShallowCompare);
 	
-	var _reactMaterialDesign = __webpack_require__(/*! ../../../modules/react-material-design */ 235);
+	var _reactMaterialDesign = __webpack_require__(/*! ../../../modules/react-material-design */ 229);
 	
-	var _common = __webpack_require__(/*! ../common */ 217);
+	var _common = __webpack_require__(/*! ../common */ 211);
 	
-	var _CompactColor = __webpack_require__(/*! ./CompactColor */ 242);
+	var _CompactColor = __webpack_require__(/*! ./CompactColor */ 236);
 	
 	var _CompactColor2 = _interopRequireDefault(_CompactColor);
 	
-	var _CompactFields = __webpack_require__(/*! ./CompactFields */ 243);
+	var _CompactFields = __webpack_require__(/*! ./CompactFields */ 237);
 	
 	var _CompactFields2 = _interopRequireDefault(_CompactFields);
 	
@@ -26211,7 +26116,7 @@
 	exports.default = (0, _common.ColorWrap)(Compact);
 
 /***/ },
-/* 235 */
+/* 229 */
 /*!**************************************************************!*\
   !*** ./~/react-color/modules/react-material-design/index.js ***!
   \**************************************************************/
@@ -26225,15 +26130,15 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
-	var _libComponentsRaised = __webpack_require__(/*! ./lib/components/Raised */ 236);
+	var _libComponentsRaised = __webpack_require__(/*! ./lib/components/Raised */ 230);
 	
 	var _libComponentsRaised2 = _interopRequireDefault(_libComponentsRaised);
 	
-	var _libComponentsTile = __webpack_require__(/*! ./lib/components/Tile */ 237);
+	var _libComponentsTile = __webpack_require__(/*! ./lib/components/Tile */ 231);
 	
 	var _libComponentsTile2 = _interopRequireDefault(_libComponentsTile);
 	
-	var _libComponentsTabs = __webpack_require__(/*! ./lib/components/Tabs */ 238);
+	var _libComponentsTabs = __webpack_require__(/*! ./lib/components/Tabs */ 232);
 	
 	var _libComponentsTabs2 = _interopRequireDefault(_libComponentsTabs);
 	
@@ -26243,7 +26148,7 @@
 
 
 /***/ },
-/* 236 */
+/* 230 */
 /*!******************************************************************************!*\
   !*** ./~/react-color/modules/react-material-design/lib/components/Raised.js ***!
   \******************************************************************************/
@@ -26378,7 +26283,7 @@
 	exports.default = Raised;
 
 /***/ },
-/* 237 */
+/* 231 */
 /*!****************************************************************************!*\
   !*** ./~/react-color/modules/react-material-design/lib/components/Tile.js ***!
   \****************************************************************************/
@@ -26519,7 +26424,7 @@
 
 
 /***/ },
-/* 238 */
+/* 232 */
 /*!****************************************************************************!*\
   !*** ./~/react-color/modules/react-material-design/lib/components/Tabs.js ***!
   \****************************************************************************/
@@ -26543,15 +26448,15 @@
 	
 	var _reactcss2 = _interopRequireDefault(_reactcss);
 	
-	var _lodash = __webpack_require__(/*! lodash */ 239);
+	var _lodash = __webpack_require__(/*! lodash */ 233);
 	
 	var _lodash2 = _interopRequireDefault(_lodash);
 	
-	var _Tab = __webpack_require__(/*! ./Tab */ 240);
+	var _Tab = __webpack_require__(/*! ./Tab */ 234);
 	
 	var _Tab2 = _interopRequireDefault(_Tab);
 	
-	var _Link = __webpack_require__(/*! ./Link */ 241);
+	var _Link = __webpack_require__(/*! ./Link */ 235);
 	
 	var _Link2 = _interopRequireDefault(_Link);
 	
@@ -26798,7 +26703,7 @@
 	exports.default = Tabs;
 
 /***/ },
-/* 239 */
+/* 233 */
 /*!******************************************!*\
   !*** ./~/react-color/~/lodash/lodash.js ***!
   \******************************************/
@@ -42676,7 +42581,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../.node/lib/~/webpack/buildin/module.js */ 170)(module), (function() { return this; }())))
 
 /***/ },
-/* 240 */
+/* 234 */
 /*!***************************************************************************!*\
   !*** ./~/react-color/modules/react-material-design/lib/components/Tab.js ***!
   \***************************************************************************/
@@ -42780,7 +42685,7 @@
 	exports.default = Tab;
 
 /***/ },
-/* 241 */
+/* 235 */
 /*!****************************************************************************!*\
   !*** ./~/react-color/modules/react-material-design/lib/components/Link.js ***!
   \****************************************************************************/
@@ -42798,7 +42703,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _lodash = __webpack_require__(/*! lodash */ 239);
+	var _lodash = __webpack_require__(/*! lodash */ 233);
 	
 	var _lodash2 = _interopRequireDefault(_lodash);
 	
@@ -42868,7 +42773,7 @@
 	exports.default = Link;
 
 /***/ },
-/* 242 */
+/* 236 */
 /*!**************************************************************!*\
   !*** ./~/react-color/lib/components/compact/CompactColor.js ***!
   \**************************************************************/
@@ -42890,7 +42795,7 @@
 	
 	var _reactcss2 = _interopRequireDefault(_reactcss);
 	
-	var _reactAddonsShallowCompare = __webpack_require__(/*! react-addons-shallow-compare */ 219);
+	var _reactAddonsShallowCompare = __webpack_require__(/*! react-addons-shallow-compare */ 213);
 	
 	var _reactAddonsShallowCompare2 = _interopRequireDefault(_reactAddonsShallowCompare);
 	
@@ -42975,7 +42880,7 @@
 	exports.default = CompactColor;
 
 /***/ },
-/* 243 */
+/* 237 */
 /*!***************************************************************!*\
   !*** ./~/react-color/lib/components/compact/CompactFields.js ***!
   \***************************************************************/
@@ -42999,11 +42904,11 @@
 	
 	var _reactcss2 = _interopRequireDefault(_reactcss);
 	
-	var _reactAddonsShallowCompare = __webpack_require__(/*! react-addons-shallow-compare */ 219);
+	var _reactAddonsShallowCompare = __webpack_require__(/*! react-addons-shallow-compare */ 213);
 	
 	var _reactAddonsShallowCompare2 = _interopRequireDefault(_reactAddonsShallowCompare);
 	
-	var _common = __webpack_require__(/*! ../common */ 217);
+	var _common = __webpack_require__(/*! ../common */ 211);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -43133,7 +43038,7 @@
 	exports.default = CompactColor;
 
 /***/ },
-/* 244 */
+/* 238 */
 /*!***********************************************************!*\
   !*** ./~/react-color/lib/components/material/Material.js ***!
   \***********************************************************/
@@ -43157,17 +43062,17 @@
 	
 	var _reactcss2 = _interopRequireDefault(_reactcss);
 	
-	var _color = __webpack_require__(/*! ../../helpers/color */ 229);
+	var _color = __webpack_require__(/*! ../../helpers/color */ 223);
 	
 	var _color2 = _interopRequireDefault(_color);
 	
-	var _reactAddonsShallowCompare = __webpack_require__(/*! react-addons-shallow-compare */ 219);
+	var _reactAddonsShallowCompare = __webpack_require__(/*! react-addons-shallow-compare */ 213);
 	
 	var _reactAddonsShallowCompare2 = _interopRequireDefault(_reactAddonsShallowCompare);
 	
-	var _reactMaterialDesign = __webpack_require__(/*! ../../../modules/react-material-design */ 235);
+	var _reactMaterialDesign = __webpack_require__(/*! ../../../modules/react-material-design */ 229);
 	
-	var _common = __webpack_require__(/*! ../common */ 217);
+	var _common = __webpack_require__(/*! ../common */ 211);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -43319,7 +43224,7 @@
 	exports.default = (0, _common.ColorWrap)(Material);
 
 /***/ },
-/* 245 */
+/* 239 */
 /*!*************************************************************!*\
   !*** ./~/react-color/lib/components/photoshop/Photoshop.js ***!
   \*************************************************************/
@@ -43343,21 +43248,21 @@
 	
 	var _reactcss2 = _interopRequireDefault(_reactcss);
 	
-	var _reactAddonsShallowCompare = __webpack_require__(/*! react-addons-shallow-compare */ 219);
+	var _reactAddonsShallowCompare = __webpack_require__(/*! react-addons-shallow-compare */ 213);
 	
 	var _reactAddonsShallowCompare2 = _interopRequireDefault(_reactAddonsShallowCompare);
 	
-	var _common = __webpack_require__(/*! ../common */ 217);
+	var _common = __webpack_require__(/*! ../common */ 211);
 	
-	var _PhotoshopFields = __webpack_require__(/*! ./PhotoshopFields */ 246);
+	var _PhotoshopFields = __webpack_require__(/*! ./PhotoshopFields */ 240);
 	
 	var _PhotoshopFields2 = _interopRequireDefault(_PhotoshopFields);
 	
-	var _PhotoshopPointerCircle = __webpack_require__(/*! ./PhotoshopPointerCircle */ 247);
+	var _PhotoshopPointerCircle = __webpack_require__(/*! ./PhotoshopPointerCircle */ 241);
 	
 	var _PhotoshopPointerCircle2 = _interopRequireDefault(_PhotoshopPointerCircle);
 	
-	var _PhotoshopPointer = __webpack_require__(/*! ./PhotoshopPointer */ 248);
+	var _PhotoshopPointer = __webpack_require__(/*! ./PhotoshopPointer */ 242);
 	
 	var _PhotoshopPointer2 = _interopRequireDefault(_PhotoshopPointer);
 	
@@ -43586,7 +43491,7 @@
 	exports.default = (0, _common.ColorWrap)(Photoshop);
 
 /***/ },
-/* 246 */
+/* 240 */
 /*!*******************************************************************!*\
   !*** ./~/react-color/lib/components/photoshop/PhotoshopFields.js ***!
   \*******************************************************************/
@@ -43610,15 +43515,15 @@
 	
 	var _reactcss2 = _interopRequireDefault(_reactcss);
 	
-	var _color = __webpack_require__(/*! ../../helpers/color */ 229);
+	var _color = __webpack_require__(/*! ../../helpers/color */ 223);
 	
 	var _color2 = _interopRequireDefault(_color);
 	
-	var _reactAddonsShallowCompare = __webpack_require__(/*! react-addons-shallow-compare */ 219);
+	var _reactAddonsShallowCompare = __webpack_require__(/*! react-addons-shallow-compare */ 213);
 	
 	var _reactAddonsShallowCompare2 = _interopRequireDefault(_reactAddonsShallowCompare);
 	
-	var _common = __webpack_require__(/*! ../common */ 217);
+	var _common = __webpack_require__(/*! ../common */ 211);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -43787,7 +43692,7 @@
 	exports.default = PhotoshopPicker;
 
 /***/ },
-/* 247 */
+/* 241 */
 /*!**************************************************************************!*\
   !*** ./~/react-color/lib/components/photoshop/PhotoshopPointerCircle.js ***!
   \**************************************************************************/
@@ -43809,7 +43714,7 @@
 	
 	var _reactcss2 = _interopRequireDefault(_reactcss);
 	
-	var _reactAddonsShallowCompare = __webpack_require__(/*! react-addons-shallow-compare */ 219);
+	var _reactAddonsShallowCompare = __webpack_require__(/*! react-addons-shallow-compare */ 213);
 	
 	var _reactAddonsShallowCompare2 = _interopRequireDefault(_reactAddonsShallowCompare);
 	
@@ -43878,7 +43783,7 @@
 	exports.default = PhotoshopPointerCircle;
 
 /***/ },
-/* 248 */
+/* 242 */
 /*!********************************************************************!*\
   !*** ./~/react-color/lib/components/photoshop/PhotoshopPointer.js ***!
   \********************************************************************/
@@ -43900,7 +43805,7 @@
 	
 	var _reactcss2 = _interopRequireDefault(_reactcss);
 	
-	var _reactAddonsShallowCompare = __webpack_require__(/*! react-addons-shallow-compare */ 219);
+	var _reactAddonsShallowCompare = __webpack_require__(/*! react-addons-shallow-compare */ 213);
 	
 	var _reactAddonsShallowCompare2 = _interopRequireDefault(_reactAddonsShallowCompare);
 	
@@ -43998,7 +43903,7 @@
 	exports.default = PhotoshopPointerCircle;
 
 /***/ },
-/* 249 */
+/* 243 */
 /*!*********************************************************!*\
   !*** ./~/react-color/lib/components/sketched/Sketch.js ***!
   \*********************************************************/
@@ -44022,17 +43927,17 @@
 	
 	var _reactcss2 = _interopRequireDefault(_reactcss);
 	
-	var _reactAddonsShallowCompare = __webpack_require__(/*! react-addons-shallow-compare */ 219);
+	var _reactAddonsShallowCompare = __webpack_require__(/*! react-addons-shallow-compare */ 213);
 	
 	var _reactAddonsShallowCompare2 = _interopRequireDefault(_reactAddonsShallowCompare);
 	
-	var _common = __webpack_require__(/*! ../common */ 217);
+	var _common = __webpack_require__(/*! ../common */ 211);
 	
-	var _SketchFields = __webpack_require__(/*! ./SketchFields */ 250);
+	var _SketchFields = __webpack_require__(/*! ./SketchFields */ 244);
 	
 	var _SketchFields2 = _interopRequireDefault(_SketchFields);
 	
-	var _SketchPresetColors = __webpack_require__(/*! ./SketchPresetColors */ 251);
+	var _SketchPresetColors = __webpack_require__(/*! ./SketchPresetColors */ 245);
 	
 	var _SketchPresetColors2 = _interopRequireDefault(_SketchPresetColors);
 	
@@ -44191,7 +44096,7 @@
 	exports.default = (0, _common.ColorWrap)(Sketch);
 
 /***/ },
-/* 250 */
+/* 244 */
 /*!***************************************************************!*\
   !*** ./~/react-color/lib/components/sketched/SketchFields.js ***!
   \***************************************************************/
@@ -44215,15 +44120,15 @@
 	
 	var _reactcss2 = _interopRequireDefault(_reactcss);
 	
-	var _color = __webpack_require__(/*! ../../helpers/color */ 229);
+	var _color = __webpack_require__(/*! ../../helpers/color */ 223);
 	
 	var _color2 = _interopRequireDefault(_color);
 	
-	var _reactAddonsShallowCompare = __webpack_require__(/*! react-addons-shallow-compare */ 219);
+	var _reactAddonsShallowCompare = __webpack_require__(/*! react-addons-shallow-compare */ 213);
 	
 	var _reactAddonsShallowCompare2 = _interopRequireDefault(_reactAddonsShallowCompare);
 	
-	var _common = __webpack_require__(/*! ../common */ 217);
+	var _common = __webpack_require__(/*! ../common */ 211);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -44355,7 +44260,7 @@
 	exports.default = ShetchFields;
 
 /***/ },
-/* 251 */
+/* 245 */
 /*!*********************************************************************!*\
   !*** ./~/react-color/lib/components/sketched/SketchPresetColors.js ***!
   \*********************************************************************/
@@ -44377,7 +44282,7 @@
 	
 	var _reactcss2 = _interopRequireDefault(_reactcss);
 	
-	var _reactAddonsShallowCompare = __webpack_require__(/*! react-addons-shallow-compare */ 219);
+	var _reactAddonsShallowCompare = __webpack_require__(/*! react-addons-shallow-compare */ 213);
 	
 	var _reactAddonsShallowCompare2 = _interopRequireDefault(_reactAddonsShallowCompare);
 	
@@ -44485,7 +44390,7 @@
 	exports.default = SketchPresetColors;
 
 /***/ },
-/* 252 */
+/* 246 */
 /*!*******************************************************!*\
   !*** ./~/react-color/lib/components/slider/Slider.js ***!
   \*******************************************************/
@@ -44509,17 +44414,17 @@
 	
 	var _reactcss2 = _interopRequireDefault(_reactcss);
 	
-	var _reactAddonsShallowCompare = __webpack_require__(/*! react-addons-shallow-compare */ 219);
+	var _reactAddonsShallowCompare = __webpack_require__(/*! react-addons-shallow-compare */ 213);
 	
 	var _reactAddonsShallowCompare2 = _interopRequireDefault(_reactAddonsShallowCompare);
 	
-	var _common = __webpack_require__(/*! ../common */ 217);
+	var _common = __webpack_require__(/*! ../common */ 211);
 	
-	var _SliderSwatches = __webpack_require__(/*! ./SliderSwatches */ 253);
+	var _SliderSwatches = __webpack_require__(/*! ./SliderSwatches */ 247);
 	
 	var _SliderSwatches2 = _interopRequireDefault(_SliderSwatches);
 	
-	var _SliderPointer = __webpack_require__(/*! ./SliderPointer */ 255);
+	var _SliderPointer = __webpack_require__(/*! ./SliderPointer */ 249);
 	
 	var _SliderPointer2 = _interopRequireDefault(_SliderPointer);
 	
@@ -44592,7 +44497,7 @@
 	exports.default = (0, _common.ColorWrap)(Slider);
 
 /***/ },
-/* 253 */
+/* 247 */
 /*!***************************************************************!*\
   !*** ./~/react-color/lib/components/slider/SliderSwatches.js ***!
   \***************************************************************/
@@ -44616,11 +44521,11 @@
 	
 	var _reactcss2 = _interopRequireDefault(_reactcss);
 	
-	var _reactAddonsShallowCompare = __webpack_require__(/*! react-addons-shallow-compare */ 219);
+	var _reactAddonsShallowCompare = __webpack_require__(/*! react-addons-shallow-compare */ 213);
 	
 	var _reactAddonsShallowCompare2 = _interopRequireDefault(_reactAddonsShallowCompare);
 	
-	var _SliderSwatch = __webpack_require__(/*! ./SliderSwatch */ 254);
+	var _SliderSwatch = __webpack_require__(/*! ./SliderSwatch */ 248);
 	
 	var _SliderSwatch2 = _interopRequireDefault(_SliderSwatch);
 	
@@ -44713,7 +44618,7 @@
 	exports.default = SliderSwatches;
 
 /***/ },
-/* 254 */
+/* 248 */
 /*!*************************************************************!*\
   !*** ./~/react-color/lib/components/slider/SliderSwatch.js ***!
   \*************************************************************/
@@ -44735,7 +44640,7 @@
 	
 	var _reactcss2 = _interopRequireDefault(_reactcss);
 	
-	var _reactAddonsShallowCompare = __webpack_require__(/*! react-addons-shallow-compare */ 219);
+	var _reactAddonsShallowCompare = __webpack_require__(/*! react-addons-shallow-compare */ 213);
 	
 	var _reactAddonsShallowCompare2 = _interopRequireDefault(_reactAddonsShallowCompare);
 	
@@ -44808,7 +44713,7 @@
 	exports.default = SliderSwatch;
 
 /***/ },
-/* 255 */
+/* 249 */
 /*!**************************************************************!*\
   !*** ./~/react-color/lib/components/slider/SliderPointer.js ***!
   \**************************************************************/
@@ -44830,7 +44735,7 @@
 	
 	var _reactcss2 = _interopRequireDefault(_reactcss);
 	
-	var _reactAddonsShallowCompare = __webpack_require__(/*! react-addons-shallow-compare */ 219);
+	var _reactAddonsShallowCompare = __webpack_require__(/*! react-addons-shallow-compare */ 213);
 	
 	var _reactAddonsShallowCompare2 = _interopRequireDefault(_reactAddonsShallowCompare);
 	
@@ -44888,7 +44793,7 @@
 	exports.default = SliderPointer;
 
 /***/ },
-/* 256 */
+/* 250 */
 /*!***********************************************************!*\
   !*** ./~/react-color/lib/components/swatches/Swatches.js ***!
   \***********************************************************/
@@ -44910,23 +44815,23 @@
 	
 	var _reactcss2 = _interopRequireDefault(_reactcss);
 	
-	var _color = __webpack_require__(/*! ../../helpers/color */ 229);
+	var _color = __webpack_require__(/*! ../../helpers/color */ 223);
 	
 	var _color2 = _interopRequireDefault(_color);
 	
-	var _materialColors = __webpack_require__(/*! material-colors */ 257);
+	var _materialColors = __webpack_require__(/*! material-colors */ 251);
 	
 	var _materialColors2 = _interopRequireDefault(_materialColors);
 	
-	var _reactAddonsShallowCompare = __webpack_require__(/*! react-addons-shallow-compare */ 219);
+	var _reactAddonsShallowCompare = __webpack_require__(/*! react-addons-shallow-compare */ 213);
 	
 	var _reactAddonsShallowCompare2 = _interopRequireDefault(_reactAddonsShallowCompare);
 	
-	var _common = __webpack_require__(/*! ../common */ 217);
+	var _common = __webpack_require__(/*! ../common */ 211);
 	
-	var _reactMaterialDesign = __webpack_require__(/*! ../../../modules/react-material-design */ 235);
+	var _reactMaterialDesign = __webpack_require__(/*! ../../../modules/react-material-design */ 229);
 	
-	var _SwatchesGroup = __webpack_require__(/*! ./SwatchesGroup */ 258);
+	var _SwatchesGroup = __webpack_require__(/*! ./SwatchesGroup */ 252);
 	
 	var _SwatchesGroup2 = _interopRequireDefault(_SwatchesGroup);
 	
@@ -45024,7 +44929,7 @@
 	exports.default = (0, _common.ColorWrap)(Swatches);
 
 /***/ },
-/* 257 */
+/* 251 */
 /*!******************************************!*\
   !*** ./~/material-colors/dist/colors.js ***!
   \******************************************/
@@ -45044,7 +44949,7 @@
 
 
 /***/ },
-/* 258 */
+/* 252 */
 /*!****************************************************************!*\
   !*** ./~/react-color/lib/components/swatches/SwatchesGroup.js ***!
   \****************************************************************/
@@ -45066,11 +44971,11 @@
 	
 	var _reactcss2 = _interopRequireDefault(_reactcss);
 	
-	var _reactAddonsShallowCompare = __webpack_require__(/*! react-addons-shallow-compare */ 219);
+	var _reactAddonsShallowCompare = __webpack_require__(/*! react-addons-shallow-compare */ 213);
 	
 	var _reactAddonsShallowCompare2 = _interopRequireDefault(_reactAddonsShallowCompare);
 	
-	var _SwatchesColor = __webpack_require__(/*! ./SwatchesColor */ 259);
+	var _SwatchesColor = __webpack_require__(/*! ./SwatchesColor */ 253);
 	
 	var _SwatchesColor2 = _interopRequireDefault(_SwatchesColor);
 	
@@ -45139,7 +45044,7 @@
 	exports.default = SwatchesGroup;
 
 /***/ },
-/* 259 */
+/* 253 */
 /*!****************************************************************!*\
   !*** ./~/react-color/lib/components/swatches/SwatchesColor.js ***!
   \****************************************************************/
@@ -45161,7 +45066,7 @@
 	
 	var _reactcss2 = _interopRequireDefault(_reactcss);
 	
-	var _reactAddonsShallowCompare = __webpack_require__(/*! react-addons-shallow-compare */ 219);
+	var _reactAddonsShallowCompare = __webpack_require__(/*! react-addons-shallow-compare */ 213);
 	
 	var _reactAddonsShallowCompare2 = _interopRequireDefault(_reactAddonsShallowCompare);
 	
@@ -45252,6 +45157,118 @@
 	}(_reactcss2.default.Component);
 	
 	exports.default = SwatchesColor;
+
+/***/ },
+/* 254 */
+/*!********************************************************************!*\
+  !*** ./app/assets/frontend/components/CredentialLevelSelector.jsx ***!
+  \********************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _Button = __webpack_require__(/*! react-bootstrap/lib/Button */ 204);
+	
+	var _Button2 = _interopRequireDefault(_Button);
+	
+	var _ButtonGroup = __webpack_require__(/*! react-bootstrap/lib/ButtonGroup */ 207);
+	
+	var _ButtonGroup2 = _interopRequireDefault(_ButtonGroup);
+	
+	var _ButtonToolbar = __webpack_require__(/*! react-bootstrap/lib/ButtonToolbar */ 175);
+	
+	var _ButtonToolbar2 = _interopRequireDefault(_ButtonToolbar);
+	
+	var _reactcss = __webpack_require__(/*! reactcss */ 5);
+	
+	var _reactcss2 = _interopRequireDefault(_reactcss);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var CredentialLevelSelector = function (_ReactCSS$Component) {
+	  _inherits(CredentialLevelSelector, _ReactCSS$Component);
+	
+	  function CredentialLevelSelector() {
+	    _classCallCheck(this, CredentialLevelSelector);
+	
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(CredentialLevelSelector).apply(this, arguments));
+	  }
+	
+	  _createClass(CredentialLevelSelector, [{
+	    key: 'classes',
+	    value: function classes() {
+	      return {
+	        "default": {
+	          spacer: {
+	            paddingBottom: "20px"
+	          }
+	        }
+	      };
+	    }
+	  }, {
+	    key: 'sendCredSelection',
+	    value: function sendCredSelection(event) {
+	      event.preventDefault();
+	      this.props.sendCredSelection(this.refs.master.value);
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return React.createElement(
+	        'div',
+	        { style: this.styles().spacer, className: 'clearfix' },
+	        React.createElement(
+	          'div',
+	          { className: 'right' },
+	          React.createElement(
+	            _ButtonToolbar2.default,
+	            null,
+	            React.createElement(
+	              _ButtonGroup2.default,
+	              { bsSize: 'small' },
+	              React.createElement(
+	                _Button2.default,
+	                { ref: 'master', onClick: this.sendCredSelection.bind(this) },
+	                'Master'
+	              ),
+	              React.createElement(
+	                _Button2.default,
+	                { ref: 'advanced', onClick: this.sendCredSelection.bind(this) },
+	                'Advanced'
+	              ),
+	              React.createElement(
+	                _Button2.default,
+	                null,
+	                'Registered'
+	              ),
+	              React.createElement(
+	                _Button2.default,
+	                null,
+	                'Certified'
+	              )
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return CredentialLevelSelector;
+	}(_reactcss2.default.Component);
+	
+	exports.default = CredentialLevelSelector;
 
 /***/ }
 /******/ ]);

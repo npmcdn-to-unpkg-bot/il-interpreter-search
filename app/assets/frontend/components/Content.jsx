@@ -1,8 +1,10 @@
+import React from 'react';
+
 export default class Content extends React.Component {
   render() {
     return (
-      <div is="modal">
-        <h3> The state of Illinois has has a new Interpretation Certification process.</h3>
+      <div>
+        <h3> Some states have a database of court interpreters.</h3>
       </div>
     )
   }

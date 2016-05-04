@@ -21,5 +21,21 @@
     "react-dom": "^0.14.7",
     "react-map-styles": "^0.3.0",
     "reactcss": "^0.4.5"
-  }
+  },
+  "devDependencies": {
+    "babel-jest": "^12.0.2",
+    "babel-polyfill": "^6.8.0",
+    "jest-cli": "^12.0.2",
+    "react-addons-test-utils": "^15.0.2"
+  },
+  "jest": {
+  "testFileExtensions": ["", "js", "jsx"],
+  "moduleFileExtensions": ["", "js", "jsx"],
+  "unmockedModulePathPatterns": [
+   "<rootDir>/node_modules/react",
+   "<rootDir>/node_modules/react-dom",
+   "<rootDir>/node_modules/react-addons-test-utils"
+ ]
+}
+
 }

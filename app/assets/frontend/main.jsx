@@ -39,10 +39,15 @@ class Main extends React.Component {
         this.extendMenu(selection);
       }
         break;
-      case "lep": {
-        console.log(selection, "-> should be lep onlly");
-        this.extendMenu(selection);
-      }
+        case "lep": {
+          console.log(selection, "-> should be lep onlly");
+          this.extendMenu(selection);
+        }
+        case "spanish": {
+          console.log(selection, "-> should be spanish only");
+          console.log(selection, "-> language=spanish");
+          this.extendMenu(selection);
+        }
 
         break;
       default: {
@@ -59,14 +64,14 @@ class Main extends React.Component {
   render() {
     return (
       <div>
+        <Content />
+
         <InterpreterTypeSelector
           asl={this.state.filterDepth == "asl" ? true : null}
           sendDataSelection={this.addDataFilter.bind(this)}
           lep={this.state.filterDepth == "lep" ? true : null}  />
 
         <LanguageList shownType={this.state.filterDepth} languages={this.state.menuList} />
-
-
         <CredentialLevelSelector sendDataSelection={this.addDataFilter.bind(this)} />
 
         <DataList entries={this.state.interpretersList} />
